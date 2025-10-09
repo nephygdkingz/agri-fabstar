@@ -1,0 +1,142 @@
+:root {
+  /* ===== Brand Colors (from Fabstar logo) ===== */
+  --color-primary: #004851;
+  /* Deep Teal */
+  --color-accent: #28d166;
+  /* Bright Green */
+  --color-dark: #000000;
+  /* Black text */
+  --color-light: #ffffff;
+  /* White background */
+
+  /* ===== Supporting Palette ===== */
+  --color-gray-light: #f8f9fa;
+  /* Light gray for backgrounds */
+  --color-gray: #6c757d;
+  /* Muted text */
+  --color-highlight: #fdd835;
+  /* Yellow for calls-to-action (optional secondary) */
+  --color-orange: #ff5100;
+  /* --color-orange: #ff9800; */
+  /* For discounts/sales */
+
+  /* ===== Transitions & Shadows ===== */
+  --transition-speed: 0.3s;
+  --shadow-soft: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ===== Logo Styling ===== */
+.logo-img {
+  height: 35px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ===== Nav Links ===== */
+.nav-link {
+  color: var(--color-dark) !important;
+  font-weight: 500;
+  margin: 0 10px;
+  position: relative;
+  transition: color var(--transition-speed);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  left: 0;
+  bottom: -4px;
+  transition: width var(--transition-speed);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: var(--color-accent) !important;
+}
+
+/* Accent Buttons (Search etc.) */
+.btn-accent {
+  background: var(--color-accent);
+  color: var(--color-light);
+  border: none;
+}
+
+.btn-accent:hover {
+  background: var(--color-primary);
+}
+
+/* Cart Badge */
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: var(--color-orange);
+  color: var(--color-light);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  padding: 2px 5px;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 260px;
+  height: 100%;
+  background: var(--color-gray-light);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: left 0.4s ease;
+  z-index: 1050;
+  padding-top: 1rem;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar a {
+  display: block;
+  padding: 12px 20px;
+  color: #212121;
+  font-weight: 500;
+  text-decoration: none;
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+  background: var(--color-gray-light);
+  border-left: 4px solid #2e7d32;
+  color: var(--green);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #212121;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1040;
+}
+
+.sidebar-overlay.show {
+  display: block;
+}

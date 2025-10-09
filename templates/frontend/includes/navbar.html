@@ -1,0 +1,71 @@
+{% load static %}
+<!-- ===== HEADER / NAVBAR SECTION ===== -->
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm" style="background-color: var(--color-light);">
+        <div class="container">
+
+            <!-- Logo -->
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'frontend/images/logo.png' %}" alt="Fabstar Limited Logo" class="logo-img">
+            </a>
+
+            <!-- Main Nav (Desktop) -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Agriculture</a></li>
+                            <li><a class="dropdown-item" href="#">Oil & Gas</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Cart & Hamburger -->
+            <div class="d-flex align-items-center">
+                <a href="#" class="me-3 position-relative text-dark">
+                    <i class="bi bi-cart3 fs-5"></i>
+                    <span class="cart-badge">2</span>
+                </a>
+                <button class="navbar-toggler border-0" type="button" id="sidebarToggle">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <!-- Search (Desktop) -->
+            <form class="d-none d-lg-flex mx-auto search-bar">
+                <input class="form-control" type="search" placeholder="Search products..." aria-label="Search">
+                <button class="btn btn-accent" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Sidebar (Mobile) -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" id="closeSidebar">&times;</button>
+        <ul class="list-unstyled mt-4">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <form class="mt-3 px-3">
+            <input type="text" class="form-control mb-2" placeholder="Search...">
+            <button class="btn btn-success w-100">Search</button>
+        </form>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+</header>
+<!-- ===== END HEADER / NAVBAR SECTION ===== -->
