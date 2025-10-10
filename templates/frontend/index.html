@@ -2,4 +2,178 @@
 {% load static %}
 
 {% block content %}
+<!-- ===== HERO SECTION ===== -->
+<section id="hero" class="position-relative">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <div class="carousel-inner">
+
+            <!-- Slide 1 -->
+            <div class="carousel-item active"
+                style="background-image: url('/static/frontend/images/heroes/hero-1.jpg');">
+                <div class="carousel-overlay d-flex align-items-center">
+                    <div class="container text-center text-light">
+                        <h1 class="display-5 fw-bold mb-3">Empowering Farmers, Enriching Harvests</h1>
+                        <p class="lead mb-4">High-quality seeds, fertilizers, and farm equipment. Everything you
+                            need to grow successfully.</p>
+                        <a href="#" class="btn btn-accent btn-lg px-4">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item" style="background-image: url('/static/frontend/images/heroes/hero-3.jpg');">
+                <div class="carousel-overlay d-flex align-items-center">
+                    <div class="container text-center text-light">
+                        <h1 class="display-5 fw-bold mb-3">Sustainable Agriculture for the Future</h1>
+                        <p class="lead mb-4">We support eco-friendly and innovative farming solutions.</p>
+                        <a href="#" class="btn btn-light btn-lg px-4">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item" style="background-image: url('/static/frontend/images/heroes/hero-2.jpg');">
+                <div class="carousel-overlay d-flex align-items-center">
+                    <div class="container text-center text-light">
+                        <h1 class="display-5 fw-bold mb-3">From Our Fields to Your Table</h1>
+                        <p class="lead mb-4">Supplying trusted farm produce and equipment nationwide.</p>
+                        <a href="#" class="btn btn-accent btn-lg px-4">Explore Products</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+
+    </div>
+</section>
+<section id="hero-end">
+    <div class="hexagon-row d-flex justify-content-center align-items-end">
+        <div class="hexagon-border">
+            <div class="hexagon">
+                <div class="hex-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4.5 8-10.5S13.5 2 12 2 4 7.5 4 11.5 12 22 12 22z"></path>
+                        <line x1="12" y1="2" x2="12" y2="11.5"></line>
+                    </svg>
+
+                    <p>Seeds</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hexagon-border">
+            <div class="hexagon">
+                <div class="hex-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" fill="none"
+                        stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8 48h48v-20H40l-8-8-8 8H8z"></path>
+                        <circle cx="16" cy="48" r="8"></circle>
+                        <circle cx="48" cy="48" r="8"></circle>
+                        <path d="M40 28v-8h8v8"></path>
+                    </svg>
+
+                    <p>Fertilizer</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hexagon-border">
+            <div class="hexagon">
+                <div class="hex-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M2 22h20"></path>
+                        <path d="M18 2l4 4L14 14l-4-4L18 2z"></path>
+                        <path d="M6 2l4 4L2 14l-4-4L6 2z" transform="translate(12,0) scale(-1,1)"></path>
+                    </svg>
+
+                    <p>Equipment</p>
+                </div>
+            </div>
+        </div>
+        <div class="hexagon-border">
+            <div class="hexagon">
+                <div class="hex-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22V2"></path>
+                        <path d="M12 6l4 4"></path>
+                        <path d="M12 6l-4 4"></path>
+                        <path d="M12 14l4 4"></path>
+                        <path d="M12 14l-4 4"></path>
+                    </svg>
+
+                    <p>Produce</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container pt-md-3 pb-md-3">
+        <div class="row align-items-center pt-5">
+
+            <!-- Left side -->
+            <div class="col-md-6 left-content mt-md-4">
+                <h4 class="text-white mb-3">Sunrise on the fields — Supplies that help your farm thrive.</h4>
+                <ul class="text-white list-unstyled mb-0">
+                    <li>✔ High-quality seeds to boost yield</li>
+                    <li>✔ Organic and chemical fertilizers</li>
+                    <li>✔ Durable farm equipment and tools</li>
+                    <li>✔ Fresh produce direct to your table</li>
+                </ul>
+            </div>
+
+            <!-- Vertical Divider -->
+            <div class="col-md-1 d-none d-md-flex justify-content-center">
+                <div class="vertical-divider"></div>
+            </div>
+
+            <!-- Right side -->
+            <div class="col-md-5 right-content mt-3 mt-md-0">
+                <div class="circle-stats-row d-flex justify-content-center gap-4 flex-wrap">
+                    <div class="circle-stat">
+                        <div class="circle-inner">
+                            <h2>95%</h2>
+                            <p>Satisfaction</p>
+                        </div>
+                    </div>
+                    <div class="circle-stat">
+                        <div class="circle-inner">
+                            <h2>500+</h2>
+                            <p>Farms Served</p>
+                        </div>
+                    </div>
+                    <div class="circle-stat">
+                        <div class="circle-inner">
+                            <h2>30yrs</h2>
+                            <p>Experience</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="circle-caption text-center mt-4">
+                    <p class="text-white fw-semibold">
+                        Trusted by farmers across the nation — delivering quality and results, season after season.
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</section>
+<!-- ===== END HERO SECTION ===== -->
 {% endblock %}
