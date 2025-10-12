@@ -1,5 +1,6 @@
 // swiper-init.js
 document.addEventListener('DOMContentLoaded', () => {
+
   const swiper = new Swiper('.featured-products-swiper', {
     loop: true, // loop enabled for smooth autoplay
     spaceBetween: 20,
@@ -26,4 +27,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+  const gallerySwiper = new Swiper(".gallery-swiper", {
+    slidesPerView: "auto",
+    spaceBetween: 15,
+    grabCursor: true,
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    centeredSlides: true,
+  });
+
 });
+
+
