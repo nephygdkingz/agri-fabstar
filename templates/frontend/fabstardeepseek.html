@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabstar Limited - Premium Agricultural Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #004d56; /* Deep teal from logo */
+            --secondary: #00e676; /* Bright green from logo */
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-teal: #e3f2fd;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-icons i {
+            font-size: 20px;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .header-icons i:hover {
+            color: var(--primary);
+        }
+        
+        .cart-count {
+            position: absolute;
+            background-color: var(--secondary);
+            color: white;
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: -8px;
+            margin-top: -8px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 77, 86, 0.85), rgba(0, 77, 86, 0.9)), url('https://images.unsplash.com/photo-1500382018845-01cab693b7eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary);
+            margin-left: 15px;
+            border-color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-top: 40px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        /* Image Grid Sections */
+        .image-grid-section {
+            background-color: var(--light);
+            padding: 80px 0;
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .grid-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+            box-shadow: var(--shadow);
+        }
+        
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .grid-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .grid-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 77, 86, 0.8), transparent);
+            padding: 20px;
+            color: var(--white);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .grid-item:hover .grid-item-overlay {
+            opacity: 1;
+        }
+        
+        .grid-item-overlay h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .grid-item-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Products Section */
+        .products {
+            background-color: var(--white);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .price {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--secondary);
+        }
+        
+        .rating {
+            color: #ffc107;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .add-to-cart {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .add-to-cart:hover {
+            background-color: #003d44;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(to right, var(--primary), #003d44);
+            color: var(--white);
+        }
+        
+        .testimonials .section-title h2,
+        .testimonials .section-title p {
+            color: var(--white);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: """;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            font-family: Georgia, serif;
+            opacity: 0.2;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            padding: 80px 0;
+            background-color: var(--light-teal);
+        }
+        
+        .cta h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: var(--gray);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            nav ul {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn-group {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+            
+            .image-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .grid-item {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMjAwIDEwMCI+PHBhdGggZmlsbD0iIzAwNGQ1NiIgZD0iTTEwLDUwTDEwLDAgNzAsMCBMODAsNTAgTDcwLDEwMCBMMTAsMTAwIFoiLz48cGF0aCBmaWxsPSIjMDBlNjc2IiBkPSJNMjAsMTAwIEwyMCw4MCBMNzAsODAgTDgwLDEwMCBaIi8+PHBhdGggZmlsbD0iIzAwNGQ1NiIgZD0iTTEwMCwwIEwxMDAsMTAwIEwxMjAsMTAwIEwxMjAsMCBaIi8+PHBhdGggZmlsbD0iIzAwNGQ1NiIgZD0iTTEyMCwwIEwxNDAsMCBMMTQwLDEwMCBMMTIwLDEwMCBaIi8+PHBhdGggZmlsbD0iIzAwNGQ1NiIgZD0iTTE0MCwwIEwxNjAsMCBMMTYwLDEwMCBMMTQwLDEwMCBaIi8+PHBhdGggZmlsbD0iIzAwZWU3NiIgZD0iTTE2MCwwIEwxODAsMCBMMTgwLDEwMCBMMTYwLDEwMCBaIi8+PHBhdGggZmlsbD0iIzAwZWU3NiIgZD0iTDE4MCwxMDAgTDE2MCwxMDAgTDE2MCw4MCBMMTgwLDgwIFoiLz48cGF0aCBmaWxsPSIjMDBlNjc2IiBkPSJNMTYwLDgwIEwxNDAsODAgTDE0MCwxMDAgTDE2MCwxMDAgWiIvPjxwYXRoIGZpbGw9IiMwMGU2NzYiIGQ9Ik0xNDAsODAgTDEyMCw4MCBMMTIwLDEwMCBMMTQwLDEwMCBaIi8+PHBhdGggZmlsbD0iIzAwZWU3NiIgZD0iTTEyMCw4MCBMMTAwLDgwIEwxMDAsMTAwIEwxMjAsMTAwIFoiLz48cGF0aCBmaWxsPSIjMDBlNjc2IiBkPSJNMTAwLDgwIEw4MCw4MCBMODAsMTAwIEwxMDAsMTAwIFoiLz48L3N2Zz4=" alt="Fabstar Limited Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <i class="fas fa-search"></i>
+                <div style="position: relative;">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">3</span>
+                </div>
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Empowering Agriculture with Innovation</h2>
+            <p>Fabstar Limited delivers premium agricultural solutions to help farmers maximize productivity, sustainability, and profitability.</p>
+            <div class="btn-group">
+                <a href="#" class="btn">Explore Products</a>
+                <a href="#" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Fabstar Limited</h2>
+                <p>Committed to revolutionizing agriculture through quality products and sustainable practices</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Farmers working together">
+                </div>
+                <div class="about-text">
+                    <h3>Our Mission</h3>
+                    <p>At Fabstar Limited, we believe in the power of innovation to transform agriculture. Since our founding, we've been dedicated to providing farmers with high-quality seeds, fertilizers, equipment, and expert guidance to help them achieve maximum yields while maintaining environmental sustainability.</p>
+                    <p>Our team of agricultural experts works closely with farmers to understand their unique challenges and develop tailored solutions that address local conditions and market demands.</p>
+                    <p>We're committed to building long-term relationships with our customers, ensuring they have access to the latest technologies and best practices in modern agriculture.</p>
+                    <a href="#" class="btn" style="margin-top: 20px;">Read Our Story</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Grid Section 1 - Farming Activities -->
+    <section class="image-grid-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Farming Community</h2>
+                <p>See how our products are making a difference in farms across the country</p>
+            </div>
+            <div class="image-grid">
+                <div class="grid-item">
+                    <img src="https://images.unsplash.com/photo-1500382018845-01cab693b7eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Field of crops">
+                    <div class="grid-item-overlay">
+                        <h3>Field Cultivation</h3>
+                        <p>Modern techniques for optimal crop growth</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Farmers working">
+                    <div class="grid-item-overlay">
+                        <h3>Teamwork</h3>
+                        <p>Collaborative efforts for better harvests</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="https://images.unsplash.com/photo-1597848212623-10279a840b97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Harvesting crops">
+                    <div class="grid-item-overlay">
+                        <h3>Harvest Season</h3>
+                        <p>Reaping the rewards of hard work</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="https://images.unsplash.com/photo-1601533053991-9e5b8e7d5e7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Irrigation system">
+                    <div class="grid-item-overlay">
+                        <h3>Water Management</h3>
+                        <p>Efficient irrigation for sustainable farming</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Grid Section 2 - Products & People -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Products in Action</h2>
+                <p>Real farmers using Fabstar products to achieve outstanding results</p>
+            </div>
+            <div class="image-grid">
+                <div class="grid-item">
+                    <img src="https://images.unsplash.com/photo-1597848212623-10279a840b97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Farmer holding seeds">
+                    <div class="grid-item-overlay">
+                        <h3>Premium Seeds</h3>
+                        <p>High-yield varieties for every climate</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="https://images.unsplash.com/photo-1603532648955-a5e2d9c7a8a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Organic fertilizer">
+                    <div class="grid-item-overlay">
+                        <h3>Organic Fertilizers</h3>
+                        <p>Natural nutrients for healthy soil</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Farm tools">
+                    <div class="grid-item-overlay">
+                        <h3>Professional Tools</h3>
+                        <p>Durable equipment for every task</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="https://images.unsplash.com/photo-1500382018845-01cab693b7eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Happy farmer">
+                    <div class="grid-item-overlay">
+                        <h3>Satisfied Customers</h3>
+                        <p>Success stories from our community</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Products</h2>
+                <p>Top-rated agricultural solutions trusted by farmers nationwide</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1597848212623-10279a840b97?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Premium Wheat Seeds">
+                    </div>
+                    <div class="product-info">
+                        <h3>Premium Wheat Seeds</h3>
+                        <p>High-yield, disease-resistant wheat seeds for optimal harvest</p>
+                        <div class="product-meta">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(128)</span>
+                            </div>
+                            <div class="price">$24.99</div>
+                        </div>
+                        <div class="product-actions">
+                            <div class="add-to-cart">Add to Cart</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1603532648955-a5e2d9c7a8a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Organic Fertilizer">
+                    </div>
+                    <div class="product-info">
+                        <h3>Organic Fertilizer</h3>
+                        <p>100% natural fertilizer for healthy soil and plants</p>
+                        <div class="product-meta">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(94)</span>
+                            </div>
+                            <div class="price">$19.99</div>
+                        </div>
+                        <div class="product-actions">
+                            <div class="add-to-cart">Add to Cart</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1601533053991-9e5b8e7d5e7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Drip Irrigation Kit">
+                    </div>
+                    <div class="product-info">
+                        <h3>Drip Irrigation Kit</h3>
+                        <p>Complete kit for efficient water usage in your fields</p>
+                        <div class="product-meta">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(210)</span>
+                            </div>
+                            <div class="price">$89.99</div>
+                        </div>
+                        <div class="product-actions">
+                            <div class="add-to-cart">Add to Cart</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Professional Farming Tools">
+                    </div>
+                    <div class="product-info">
+                        <h3>Professional Farming Tools</h3>
+                        <p>Complete set of durable tools for all farming tasks</p>
+                        <div class="product-meta">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(76)</span>
+                            </div>
+                            <div class="price">$129.99</div>
+                        </div>
+                        <div class="product-actions">
+                            <div class="add-to-cart">Add to Cart</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Farmers Say</h2>
+                <p>Hear from our satisfied customers across the country</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Fabstar Limited has transformed my farming business. Their premium seeds have increased my yield by 40% compared to last season!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RK</div>
+                        <div class="author-info">
+                            <h4>Rajesh Kumar</h4>
+                            <p>Wheat Farmer, Punjab</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "The organic fertilizers from Fabstar have improved my soil quality significantly. My crops are healthier and more resilient."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SP</div>
+                        <div class="author-info">
+                            <h4>Sunita Patel</h4>
+                            <p>Organic Vegetable Farmer, Gujarat</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Their drip irrigation system saved me 60% on water usage while maintaining the same crop output. Excellent investment!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AM</div>
+                        <div class="author-info">
+                            <h4>Ahmed Mohammed</h4>
+                            <p>Cotton Farmer, Maharashtra</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Join Thousands of Successful Farmers</h2>
+            <p>Sign up today and get 15% off your first order plus free shipping on all orders over $100</p>
+            <a href="#" class="btn">Create Account</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMjAwIDEwMCI+PHBhdGggZmlsbD0iIzAwNGQ1NiIgZD0iTTEwLDUwTDEwLDAgNzAsMCBMODAsNTAgTDcwLDEwMCBMMTAsMTAwIFoiLz48cGF0aCBmaWxsPSIjMDBlNjc2IiBkPSJNMjAsMTAwIEwyMCw4MCBMNzAsODAgTDgwLDEwMCBaIi8+PHBhdGggZmlsbD0iIzAwNGQ1NiIgZD0iTTEwMCwwIEwxMDAsMTAwIEwxMjAsMTAwIEwxMjAsMCBaIi8+PHBhdGggZmlsbD0iIzAwNGQ1NiIgZD0iTTEyMCwwIEwxNDAsMCBMMTQwLDEwMCBMMTIwLDEwMCBaIi8+PHBhdGggZmlsbD0iIzAwNGQ1NiIgZD0iTTE0MCwwIEwxNjAsMCBMMTYwLDEwMCBMMTQwLDEwMCBaIi8+PHBhdGggZmlsbD0iIzAwZWU3NiIgZD0iTDE2MCwwIEwxODAsMCBMMTgwLDEwMCBMMTYwLDEwMCBaIi8+PHBhdGggZmlsbD0iIzAwZWU3NiIgZD0iTDE4MCwxMDAgTDE2MCwxMDAgTDE2MCw4MCBMMTgwLDgwIFoiLz48cGF0aCBmaWxsPSIjMDBlNjc2IiBkPSJNMTYwLDgwIEwxNDAsODAgTDE0MCwxMDAgTDE2MCwxMDAgWiIvPjxwYXRoIGZpbGw9IiMwMGU2NzYiIGQ9Ik0xNDAsODAgTDEyMCw4MCBMMTIwLDEwMCBMMTQwLDEwMCBaIi8+PHBhdGggZmlsbD0iIzAwZWU3NiIgZD0iTTEyMCw4MCBMMTAwLDgwIEwxMDAsMTAwIEwxMjAsMTAwIFoiLz48cGF0aCBmaWxsPSIjMDBlNjc2IiBkPSJNMTAwLDgwIEw4MCw4MCBMODAsMTAwIEwxMDAsMTAwIFoiLz48L3N2Zz4=" alt="Fabstar Limited Logo">
+                    </div>
+                    <p>Your trusted partner in agricultural excellence. We provide premium products to help farmers achieve maximum productivity and sustainability.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Products</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Seeds & Saplings</a></li>
+                        <li><a href="#">Fertilizers</a></li>
+                        <li><a href="#">Irrigation Systems</a></li>
+                        <li><a href="#">Farming Tools</a></li>
+                        <li><a href="#">Pesticides</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 AgriTech Park, Industrial Zone</p>
+                    <p><i class="fas fa-phone"></i> +1 (800) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@fabstarlimited.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Fabstar Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const cartCount = document.querySelector('.cart-count');
+                let count = parseInt(cartCount.textContent);
+                cartCount.textContent = count + 1;
+                
+                // Animation effect
+                this.textContent = 'Added!';
+                this.style.backgroundColor = '#003d44';
+                
+                setTimeout(() => {
+                    this.textContent = 'Add to Cart';
+                    this.style.backgroundColor = '';
+                }, 1500);
+            });
+        });
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

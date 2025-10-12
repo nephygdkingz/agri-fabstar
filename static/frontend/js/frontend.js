@@ -59,7 +59,77 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll);
 
+
   // Auto-update footer year
   document.getElementById("year").textContent = new Date().getFullYear();
 
+});
+
+// ===== GALLERY LIGHTBOX =====
+document.addEventListener("DOMContentLoaded", () => {
+  const galleryItems = document.querySelectorAll(".gallery-item img");
+  const lightbox = document.getElementById("lightbox");
+  const swiperWrapper = document.querySelector(".lightbox-swiper .swiper-wrapper");
+  const closeLightbox = document.querySelector(".close-lightbox");
+
+  let swiperInstance;
+
+  galleryItems.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      // Clear previous slides
+      swiperWrapper.innerHTML = "";
+
+      // Create slides dynamically
+      galleryItems.forEach((item) => {
+        const slide = document.createElement("div");
+        slide.classList.add("swiper-slide");
+        slide.innerHTML = `
+          <img src="${item.src}" alt="${item.alt}">
+          <div class="lightbox-caption">${item.alt || ""}</div>
+        `;
+        swiperWrapper.appendChild(slide);
+      });
+
+      // Show lightbox
+      lightbox.classList.add("active");
+
+      // Initialize Swiper
+      swiperInstance = new Swiper(".lightbox-swiper", {
+        initialSlide: index,
+        loop: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        keyboard: true,
+        spaceBetween: 30,
+        effect: "fade",
+        fadeEffect: { crossFade: true },
+      });
+    });
+  });
+
+  // Close on click or ESC
+  closeLightbox.addEventListener("click", () => {
+    lightbox.classList.remove("active");
+    swiperInstance?.destroy();
+  });
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove("active");
+      swiperInstance?.destroy();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      lightbox.classList.remove("active");
+      swiperInstance?.destroy();
+    }
+  });
 });
