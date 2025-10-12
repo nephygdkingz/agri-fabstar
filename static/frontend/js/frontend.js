@@ -66,70 +66,77 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== GALLERY LIGHTBOX =====
-document.addEventListener("DOMContentLoaded", () => {
-  const galleryItems = document.querySelectorAll(".gallery-item img");
-  const lightbox = document.getElementById("lightbox");
-  const swiperWrapper = document.querySelector(".lightbox-swiper .swiper-wrapper");
-  const closeLightbox = document.querySelector(".close-lightbox");
+document.addEventListener('DOMContentLoaded', () => {
+  const galleryItems = document.querySelectorAll('.gallery-item img, .swiper-slide img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = lightbox.querySelector('img');
+  const caption = document.querySelector('.lightbox-caption');
+  const closeBtn = document.querySelector('.lightbox-close');
+  const prevBtn = document.querySelector('.lightbox-prev');
+  const nextBtn = document.querySelector('.lightbox-next');
+  const viewFullGalleryBtn = document.getElementById('viewFullGallery');
 
-  let swiperInstance;
+  let currentIndex = 0;
+  const images = Array.from(galleryItems).map(img => ({
+    src: img.src,
+    alt: img.alt
+  }));
 
-  galleryItems.forEach((img, index) => {
-    img.addEventListener("click", () => {
-      // Clear previous slides
-      swiperWrapper.innerHTML = "";
+  function openLightbox(index) {
+    currentIndex = index;
+    lightboxImg.src = images[currentIndex].src;
+    caption.textContent = images[currentIndex].alt;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 
-      // Create slides dynamically
-      galleryItems.forEach((item) => {
-        const slide = document.createElement("div");
-        slide.classList.add("swiper-slide");
-        slide.innerHTML = `
-          <img src="${item.src}" alt="${item.alt}">
-          <div class="lightbox-caption">${item.alt || ""}</div>
-        `;
-        swiperWrapper.appendChild(slide);
-      });
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 
-      // Show lightbox
-      lightbox.classList.add("active");
+  function showNext() {
+    currentIndex = (currentIndex + 1) % images.length;
+    openLightbox(currentIndex);
+  }
 
-      // Initialize Swiper
-      swiperInstance = new Swiper(".lightbox-swiper", {
-        initialSlide: index,
-        loop: true,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        keyboard: true,
-        spaceBetween: 30,
-        effect: "fade",
-        fadeEffect: { crossFade: true },
-      });
-    });
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    openLightbox(currentIndex);
+  }
+
+  // Bind image clicks
+  galleryItems.forEach((img, i) => {
+    img.addEventListener('click', () => openLightbox(i));
   });
 
-  // Close on click or ESC
-  closeLightbox.addEventListener("click", () => {
-    lightbox.classList.remove("active");
-    swiperInstance?.destroy();
+  // Buttons and keys
+  closeBtn.addEventListener('click', closeLightbox);
+  nextBtn.addEventListener('click', showNext);
+  prevBtn.addEventListener('click', showPrev);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
   });
 
-  lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) {
-      lightbox.classList.remove("active");
-      swiperInstance?.destroy();
-    }
-  });
+  // 🌿 View Full Gallery button (mobile)
+  // if (viewFullGalleryBtn) {
+  //   viewFullGalleryBtn.addEventListener('click', () => openLightbox(0));
+  // }
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      lightbox.classList.remove("active");
-      swiperInstance?.destroy();
+  // Swiper init (for mobile)
+  new Swiper('.myGallerySwiper', {
+    slidesPerView: 1.2,
+    spaceBetween: 15,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      480: { slidesPerView: 2 },
+      768: { slidesPerView: 3 },
     }
   });
 });
+

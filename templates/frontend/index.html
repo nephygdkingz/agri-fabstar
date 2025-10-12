@@ -559,78 +559,88 @@
 <!-- ===== END PROMOTIONAL BANNER SECTION ===== -->
 
 <!-- ===== GALLERY SECTION ===== -->
-<section id="gallery" class="py-5">
-    <div class="container text-center">
-        <h2 class="fw-bold mb-3 text-uppercase fade-up" style="color: var(--color-primary);">
-            Our Farm Gallery
-        </h2>
-        <p class="text-muted mb-5 fade-up" style="animation-delay: 0.1s;">
-            A glimpse into our farms, equipment, and dedicated growers
-        </p>
+<section id="gallery" class="py-5 text-center">
+  <div class="container">
+    <h2 class="fw-bold mb-3 text-uppercase fade-up" style="color: var(--color-primary);">
+      Our Farm Gallery
+    </h2>
+    <p class="text-muted mb-5 fade-up" style="animation-delay: 0.1s;">
+      Explore moments from our fields, produce, and farming life.
+    </p>
 
-        <!-- Desktop Masonry Grid -->
-        <div class="gallery-grid fade-up d-none d-md-grid" style="animation-delay: 0.2s;">
-            <div class="gallery-item wide"><img
-                    src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=800&q=60"
-                    alt="Fertilizer Storage"></div>
-            <div class="gallery-item"><img
-                    src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=60"
-                    alt="Maize Field"></div>
-            <div class="gallery-item tall"><img
-                    src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=800&q=60"
-                    alt="Irrigation System"></div>
-            <div class="gallery-item"><img
-                    src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=800&q=60"
-                    alt="Fresh Produce"></div>
-            <div class="gallery-item wide"><img
-                    src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=800&q=60"
-                    alt="Farm Tools"></div>
-            <!-- <div class="gallery-item"><img
-                    src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=800&q=60"
-                    alt="Harvest Basket"></div> -->
-        </div>
-
-        <!-- Mobile Swiper -->
-        <div class="swiper gallery-swiper d-md-none fade-up" style="animation-delay: 0.3s;">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img
-                        src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=800&q=60"
-                        alt="Fertilizer Storage"></div>
-                <div class="swiper-slide"><img
-                        src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=60"
-                        alt="Maize Field"></div>
-                <div class="swiper-slide"><img
-                        src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=800&q=60"
-                        alt="Irrigation System"></div>
-                <div class="swiper-slide"><img
-                        src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=800&q=60"
-                        alt="Fresh Produce"></div>
-                <div class="swiper-slide"><img
-                        src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=800&q=60"
-                        alt="Farm Tools"></div>
-                <div class="swiper-slide"><img
-                        src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=800&q=60"
-                        alt="Harvest Basket"></div>
-            </div>
-        </div>
+    <!-- 🖥️ Desktop / Tablet Masonry Grid -->
+    <div class="gallery-grid d-none d-md-grid">
+      <div class="gallery-item wide">
+        <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=800&q=60" alt="Fresh Tomatoes">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=800&q=60" alt="Farm Field">
+      </div>
+      <div class="gallery-item tall">
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=60" alt="Fruits Basket">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=800&q=60" alt="Green Crops">
+      </div>
+      <div class="gallery-item wide">
+        <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=800&q=60" alt="Vegetables Display">
+      </div>
+      <!-- <div class="gallery-item wide">
+        <img src="https://images.unsplash.com/photo-1567306301408-9b74779a11af?auto=format&fit=crop&w=1000&q=60" alt="Farm Market">
+      </div> -->
     </div>
 
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox">
-        <span class="close-lightbox">&times;</span>
-
-        <!-- Swiper Container -->
-        <div class="swiper lightbox-swiper">
-            <div class="swiper-wrapper">
-                <!-- JS will populate these slides dynamically -->
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
+    <!-- 📱 Mobile Swiper -->
+    <div class="gallery-swiper d-md-none fade-up">
+      <div class="swiper myGallerySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=800&q=60" alt="Fresh Tomatoes">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=800&q=60" alt="Farm Field">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=60" alt="Fruits Basket">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=800&q=60" alt="Green Crops">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=800&q=60" alt="Vegetables Display">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://images.unsplash.com/photo-1567306301408-9b74779a11af?auto=format&fit=crop&w=1000&q=60" alt="Farm Market">
+          </div>
         </div>
-    </div>
 
+        <!-- Pagination Dots -->
+        <div class="swiper-pagination mt-3"></div>
+      </div>
+
+      <!-- 🌿 View Full Gallery Button -->
+      <!-- <div class="mt-4">
+        <button id="viewFullGallery" class="btn btn-accent btn-sm px-4 py-2">
+          View Full Gallery
+        </button>
+      </div> -->
+    </div>
+  </div>
 </section>
+
+<!-- ===============================
+     LIGHTBOX POPUP
+================================= -->
+<div id="lightbox">
+  <button class="lightbox-close">&times;</button>
+  <button class="lightbox-prev">&lsaquo;</button>
+  <div class="lightbox-content">
+    <img src="" alt="">
+    <p class="lightbox-caption"></p>
+  </div>
+  <button class="lightbox-next">&rsaquo;</button>
+</div>
+
 <!-- ===== END GALLERY SECTION ===== -->
 
 
