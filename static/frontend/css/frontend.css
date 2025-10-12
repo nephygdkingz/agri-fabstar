@@ -53,6 +53,19 @@
   background: #276a28;
 }
 
+/* ===== Scroll Animations ===== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 
 /* ===== Logo Styling ===== */
 .logo-img {
@@ -697,4 +710,230 @@
   50% {
     transform: translateY(-6px);
   }
+}
+
+
+/* ===== WHY CHOOSE US ===== */
+.enhanced-why-choose {
+  background: linear-gradient(135deg, rgba(40, 209, 102, 0.05), rgba(0, 72, 81, 0.08));
+}
+
+/* Limit image height for better balance */
+#why-choose-us img {
+  max-height: 400px;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Optional subtle shadow for icons */
+#why-choose-us i {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* -------------------------
+       PROMO BANNER
+       ------------------------- */
+.promo-banner-one {
+  border-radius: 12px;
+  overflow: hidden;
+  color: white;
+  position: relative;
+  background: rgba(255, 166, 0, 0.808);
+  /* background: orangered; */
+}
+
+.promo-banner-one .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.48));
+}
+
+
+/* ===== PROMOTIONAL BANNER ===== */
+.promo-banner {
+  background: linear-gradient(135deg, var(--color-primary), #004851);
+  position: relative;
+  overflow: hidden;
+}
+
+.promo-banner::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent 70%);
+  animation: rotateGradient 15s linear infinite;
+}
+
+@keyframes rotateGradient {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Text accent color */
+.text-accent {
+  color: #f9c74f !important;
+}
+
+
+/* ===== TESTIMONIALS ===== */
+#testimonials {
+  background: var(--color-gray-light);
+}
+
+#testimonials .card {
+  border-radius: 1rem;
+  background: var(--color-light);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+#testimonials .card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-soft);
+}
+
+#testimonials .bi-chat-quote-fill {
+  color: var(--color-accent);
+}
+
+#testimonials h2 {
+  color: var(--color-primary);
+}
+
+/* Make fade transition smooth */
+.carousel-fade .carousel-item {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.carousel-fade .carousel-item.active {
+  opacity: 1;
+}
+
+/* Carousel Controls Styling */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  padding: 1rem;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  background-color: var(--color-primary);
+}
+
+
+/* ===== FRESH PROMO SECTION ===== */
+#fresh-promo {
+  position: relative;
+  background: url("https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat fixed;
+  color: var(--color-light);
+  overflow: hidden;
+  padding: 100px 0;
+}
+
+#fresh-promo .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: brightness(0.8);
+}
+
+#fresh-promo .content {
+  position: relative;
+  z-index: 2;
+}
+
+#fresh-promo h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+#fresh-promo p {
+  font-size: 1.1rem;
+  color: #f1f1f1;
+}
+
+#fresh-promo .btn {
+  border-radius: 50px;
+  background: var(--color-accent);
+  color: #fff;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+#fresh-promo .btn:hover {
+  background: #1ca85d;
+  transform: translateY(-3px);
+}
+
+
+/* ===== NEWSLETTER SECTION ===== */
+#newsletter {
+  background: linear-gradient(135deg, var(--color-gray-light), #e9f7ef);
+}
+
+#newsletter h2 {
+  color: var(--color-primary);
+}
+
+.newsletter-form input {
+  border-radius: 50px;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid var(--color-accent);
+  transition: all 0.3s ease;
+}
+
+.newsletter-form input:focus {
+  box-shadow: 0 0 10px rgba(40, 209, 102, 0.4);
+  outline: none;
+}
+
+.newsletter-form button {
+  border-radius: 50px;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.newsletter-form button:hover {
+  transform: translateY(-3px);
+}
+
+
+/* ===== FOOTER SECTION ===== */
+#footer {
+  background-color: var(--color-dark);
+  color: #f1f1f1;
+  font-size: 0.95rem;
+}
+
+#footer a {
+  color: #e2e2e2;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#footer a:hover {
+  color: var(--color-accent);
+}
+
+#footer .social-links a {
+  font-size: 1.25rem;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+#footer .social-links a:hover {
+  color: var(--color-accent);
 }
