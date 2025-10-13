@@ -5,10 +5,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabstar Limited — Farm & Agricultural Supplies | {% block title %}Home{% endblock %}</title>
-    <meta name="description"
-        content="FabStar Limited — Quality seeds, fertilizers, tools and irrigation supplies. Reliable service, bulk discounts, and expert support." />
-    <meta name="theme-color" content="#fdd835" />
+    <title>{% block title %}{{ meta_title|default:default_meta_title }}{% endblock %}</title>
+    <meta name="description" content="{{ meta_description|default:default_meta_description }}" />
+    <meta name="keywords" content="{{ meta_keywords|default:default_meta_keywords }}" />
+    <link rel="canonical" href="{{ canonical_url|default:request.build_absolute_uri }}" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ meta_title|default:default_meta_title }}" />
+    <meta property="og:description" content="{{ meta_description|default:default_meta_description }}" />
+    <meta property="og:image" content="{{ og_image|default:default_og_image }}" />
+    <meta property="og:url" content="{{ canonical_url|default:request.build_absolute_uri }}" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ meta_title|default:default_meta_title }}" />
+    <meta name="twitter:description" content="{{ meta_description|default:default_meta_description }}" />
+    <meta property="twitter:image" content="{{ og_image|default:default_og_image }}" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Fabstar Limited",
+        "url": "{{ canonical_url|default:canonical_url }}",
+        "logo": "{{ default_logo_url }}",
+        "description": "{{ meta_description|default:default_meta_description }}",
+        "sameAs": [
+        "https://www.facebook.com/fabstarlimited",
+        "https://www.instagram.com/fabstarlimited",
+        "https://twitter.com/fabstarltd"
+        ]
+    }
+    </script>
+
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+    {% block extra_head %}{% endblock %}
 
     <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
