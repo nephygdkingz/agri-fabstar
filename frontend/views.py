@@ -31,7 +31,7 @@ def about_view(request):
             {"title": "About Us", "url": None},
         ],
     }
-    return render(request, "frontend/about.html", context)
+    return render(request, "frontend/about2.html", context)
 
 def contact_view(request):
     if request.method == "POST":

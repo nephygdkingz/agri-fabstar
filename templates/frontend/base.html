@@ -40,7 +40,11 @@
     }
     </script>
 
-    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+    <!-- favicon icon -->
+     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'frontend/images/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'frontend/images/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'frontend/images/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'frontend/images/favicon/site.webmanifest' %}">
     {% block extra_head %}{% endblock %}
 
     <!-- GOOGLE FONT -->
