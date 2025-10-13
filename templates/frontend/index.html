@@ -10,13 +10,13 @@
 
             <!-- Slide 1 -->
             <div class="carousel-item active"
-                style="background-image: url('/static/frontend/images/heroes/hero-1.jpg');">
+                style="background-image: url('/static/frontend/images/heroes/hero-5.jpg');">
                 <div class="carousel-overlay d-flex align-items-center">
                     <div class="container text-center text-light">
                         <h1 class="display-5 fw-bold mb-3">Empowering Farmers, Enriching Harvests</h1>
                         <p class="lead mb-4">High-quality seeds, fertilizers, and farm equipment. Everything you
                             need to grow successfully.</p>
-                        <a href="#" class="btn btn-accent btn-lg px-4">Shop Now</a>
+                        <a href="#" class="btn btn-accent btn-lg px-4">Order Now</a>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
             </div>
 
             <!-- Slide 3 -->
-            <div class="carousel-item" style="background-image: url('/static/frontend/images/heroes/hero-2.jpg');">
+            <div class="carousel-item" style="background-image: url('/static/frontend/images/heroes/hero-4.jpg');">
                 <div class="carousel-overlay d-flex align-items-center">
                     <div class="container text-center text-light">
                         <h1 class="display-5 fw-bold mb-3">From Our Fields to Your Table</h1>
@@ -68,7 +68,7 @@
                         <line x1="12" y1="2" x2="12" y2="11.5"></line>
                     </svg>
 
-                    <p>Seeds</p>
+                    <p>Livestock</p>
                 </div>
             </div>
         </div>
@@ -84,7 +84,7 @@
                         <path d="M40 28v-8h8v8"></path>
                     </svg>
 
-                    <p>Fertilizer</p>
+                    <p>Rice</p>
                 </div>
             </div>
         </div>
@@ -99,7 +99,7 @@
                         <path d="M6 2l4 4L2 14l-4-4L6 2z" transform="translate(12,0) scale(-1,1)"></path>
                     </svg>
 
-                    <p>Equipment</p>
+                    <p>Gas</p>
                 </div>
             </div>
         </div>
@@ -115,7 +115,7 @@
                         <path d="M12 14l-4 4"></path>
                     </svg>
 
-                    <p>Produce</p>
+                    <p>Logistics</p>
                 </div>
             </div>
         </div>
@@ -128,7 +128,7 @@
             <div class="col-md-6 left-content mt-md-4">
                 <h4 class="text-white mb-3">Sunrise on the fields — Supplies that help your farm thrive.</h4>
                 <ul class="text-white list-unstyled mb-0">
-                    <li>✔ High-quality seeds to boost yield</li>
+                    <li>✔ High quality seeds to boost yield</li>
                     <li>✔ Organic and chemical fertilizers</li>
                     <li>✔ Durable farm equipment and tools</li>
                     <li>✔ Fresh produce direct to your table</li>
@@ -569,12 +569,13 @@
     </p>
 
     <!-- 🖥️ Desktop / Tablet Masonry Grid -->
-    <div class="gallery-grid d-none d-md-grid">
+    <div class="gallery-grid d-none d-md-grid fade-up" style="animation-delay: 0.1s;"
+    \>
       <div class="gallery-item wide">
-        <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=800&q=60" alt="Fresh Tomatoes">
+        <img src="{% static 'frontend/images/livestock/livestock-3.jpg' %}" alt="Fresh Tomatoes">
       </div>
       <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=800&q=60" alt="Farm Field">
+        <img src="{% static 'frontend/images/livestock/livestock-2.jpg' %}" alt="Farm Field">
       </div>
       <div class="gallery-item tall">
         <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=60" alt="Fruits Basket">
@@ -583,7 +584,7 @@
         <img src="https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=800&q=60" alt="Green Crops">
       </div>
       <div class="gallery-item wide">
-        <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=800&q=60" alt="Vegetables Display">
+        <img src="{% static 'frontend/images/livestock/livestock-1.jpg' %}" alt="Vegetables Display">
       </div>
       <!-- <div class="gallery-item wide">
         <img src="https://images.unsplash.com/photo-1567306301408-9b74779a11af?auto=format&fit=crop&w=1000&q=60" alt="Farm Market">
@@ -595,10 +596,10 @@
       <div class="swiper myGallerySwiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=800&q=60" alt="Fresh Tomatoes">
+            <img src="{% static 'frontend/images/livestock/livestock-3.jpg' %}" alt="Fresh Tomatoes">
           </div>
           <div class="swiper-slide">
-            <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=800&q=60" alt="Farm Field">
+            <img src="{% static 'frontend/images/livestock/livestock-2.jpg' %}" alt="Farm Field">
           </div>
           <div class="swiper-slide">
             <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=60" alt="Fruits Basket">
@@ -607,7 +608,7 @@
             <img src="https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=800&q=60" alt="Green Crops">
           </div>
           <div class="swiper-slide">
-            <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=800&q=60" alt="Vegetables Display">
+            <img src="{% static 'frontend/images/livestock/livestock-1.jpg' %}" alt="Vegetables Display">
           </div>
           <div class="swiper-slide">
             <img src="https://images.unsplash.com/photo-1567306301408-9b74779a11af?auto=format&fit=crop&w=1000&q=60" alt="Farm Market">
