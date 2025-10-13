@@ -15,16 +15,21 @@
                     <li class="nav-item"><a class="nav-link active" href="{% url 'frontend:home' %}">Home</a></li>
                     <!-- <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Categories</a></li> -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Services
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'frontend:agricultural_products' %}">Agriculture Products</a></li>
-                            <li><a class="dropdown-item" href="#">Oil & Gas</a></li>
-                        </ul>
-                    </li>
+                    {% if nav_categories %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Services
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% for category in nav_categories %}
+                                    <li>
+                                        <a class="dropdown-item" href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endif %}
                     <li class="nav-item"><a class="nav-link" href="#">Order</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'frontend:about' %}">About Us</a></li>
                     <!-- <li class="nav-item"><a class="nav-link" href="#">Blog</a></li> -->

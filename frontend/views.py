@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.urls import reverse
 from django.core.mail import EmailMessage
+from django.http import HttpResponse
 
 def home_view(request):
     context = {
@@ -107,3 +108,15 @@ def agricultural_products_view(request):
         ],
     }
     return render(request, "frontend/agricultural_products.html", context)
+
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "Disallow: /admin/",
+        "Disallow: /api/",
+        "Disallow: /accounts/",
+        "Allow: /",
+        "",
+        f"Sitemap: {request.build_absolute_uri('/sitemap.xml')}",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")

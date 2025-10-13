@@ -1134,3 +1134,105 @@
 #footer .social-links a:hover {
   color: var(--color-accent);
 }
+
+
+/* ===== ABOUT HERO ===== */
+.about-hero {
+  position: relative;
+  height: 60vh;
+  background: linear-gradient(120deg, var(--color-accent), var(--color-primary), var(--color-primary), var(--color-accent));
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
+  overflow: hidden;
+}
+
+.about-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+/* ===== Animated Gradient ===== */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Breadcrumb */
+.about-hero .breadcrumb {
+  background: transparent;
+}
+.about-hero .breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255, 255, 255, 0.6);
+}
+.about-hero .breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Floating Leaves Animation */
+.leaf {
+  position: absolute;
+  background-image: url("https://cdn-icons-png.flaticon.com/512/415/415733.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.18;
+  width: 60px;
+  height: 60px;
+  animation: floatLeaf 18s linear infinite;
+}
+
+.leaf1 {
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+  animation-duration: 22s;
+}
+.leaf2 {
+  top: 50%;
+  left: 60%;
+  animation-delay: 4s;
+  animation-duration: 25s;
+}
+.leaf3 {
+  top: 70%;
+  left: 80%;
+  animation-delay: 7s;
+  animation-duration: 28s;
+}
+
+@keyframes floatLeaf {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-20px) rotate(15deg);
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.2;
+  }
+}
+
+#join-cta {
+  background: linear-gradient(135deg, var(--color-primary), #035872);
+  position: relative;
+  padding: 5rem 1rem;
+  overflow: hidden;
+}
+
+#join-cta .overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.3));
+  animation: gradientMove 6s ease-in-out infinite alternate;
+}

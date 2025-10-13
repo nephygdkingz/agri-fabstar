@@ -561,86 +561,90 @@
 
 <!-- ===== GALLERY SECTION ===== -->
 <section id="gallery" class="py-5 text-center">
-  <div class="container">
-    <h2 class="fw-bold mb-3 text-uppercase fade-up" style="color: var(--color-primary);">
-      Our Farm Gallery
-    </h2>
-    <p class="text-muted mb-5 fade-up" style="animation-delay: 0.1s;">
-      Explore moments from our fields, produce, and farming life.
-    </p>
+    <div class="container">
+        <h2 class="fw-bold mb-3 text-uppercase fade-up" style="color: var(--color-primary);">
+            Our Farm Gallery
+        </h2>
+        <p class="text-muted mb-5 fade-up" style="animation-delay: 0.1s;">
+            Explore moments from our fields, produce, and farming life.
+        </p>
 
-    <!-- 🖥️ Desktop / Tablet Masonry Grid -->
-    <div class="gallery-grid d-none d-md-grid fade-up" style="animation-delay: 0.1s;"
-    \>
-      <div class="gallery-item wide">
-        <img src="{% static 'frontend/images/livestock/livestock-3.jpg' %}" alt="Fresh Tomatoes">
-      </div>
-      <div class="gallery-item">
-        <img src="{% static 'frontend/images/livestock/livestock-2.jpg' %}" alt="Farm Field">
-      </div>
-      <div class="gallery-item tall">
-        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=60" alt="Fruits Basket">
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=800&q=60" alt="Green Crops">
-      </div>
-      <div class="gallery-item wide">
-        <img src="{% static 'frontend/images/livestock/livestock-1.jpg' %}" alt="Vegetables Display">
-      </div>
-      <!-- <div class="gallery-item wide">
+        <!-- 🖥️ Desktop / Tablet Masonry Grid -->
+        <div class="gallery-grid d-none d-md-grid fade-up" style="animation-delay: 0.1s;" \>
+            <div class="gallery-item wide">
+                <img src="{% static 'frontend/images/livestock/livestock-3.jpg' %}" alt="Fresh Tomatoes">
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'frontend/images/livestock/livestock-2.jpg' %}" alt="Farm Field">
+            </div>
+            <div class="gallery-item tall">
+                <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=60"
+                    alt="Fruits Basket">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1567306301408-9b74779a11af?auto=format&fit=crop&w=1000&q=60"
+                    alt="Green Crops">
+            </div>
+            <div class="gallery-item wide">
+                <img src="{% static 'frontend/images/livestock/gasplant-4.jpg' %}" alt="Vegetables Display">
+            </div>
+            <!-- <div class="gallery-item wide">
         <img src="https://images.unsplash.com/photo-1567306301408-9b74779a11af?auto=format&fit=crop&w=1000&q=60" alt="Farm Market">
       </div> -->
-    </div>
-
-    <!-- 📱 Mobile Swiper -->
-    <div class="gallery-swiper d-md-none fade-up">
-      <div class="swiper myGallerySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="{% static 'frontend/images/livestock/livestock-3.jpg' %}" alt="Fresh Tomatoes">
-          </div>
-          <div class="swiper-slide">
-            <img src="{% static 'frontend/images/livestock/livestock-2.jpg' %}" alt="Farm Field">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=60" alt="Fruits Basket">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=800&q=60" alt="Green Crops">
-          </div>
-          <div class="swiper-slide">
-            <img src="{% static 'frontend/images/livestock/livestock-1.jpg' %}" alt="Vegetables Display">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://images.unsplash.com/photo-1567306301408-9b74779a11af?auto=format&fit=crop&w=1000&q=60" alt="Farm Market">
-          </div>
         </div>
 
-        <!-- Pagination Dots -->
-        <div class="swiper-pagination mt-3"></div>
-      </div>
+        <!-- 📱 Mobile Swiper -->
+        <div class="gallery-swiper d-md-none fade-up">
+            <div class="swiper myGallerySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="{% static 'frontend/images/livestock/livestock-3.jpg' %}" alt="Fresh Tomatoes">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{% static 'frontend/images/livestock/livestock-2.jpg' %}" alt="Farm Field">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=60"
+                            alt="Fruits Basket">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=800&q=60"
+                            alt="Green Crops">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{% static 'frontend/images/livestock/livestock-1.jpg' %}" alt="Vegetables Display">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1567306301408-9b74779a11af?auto=format&fit=crop&w=1000&q=60"
+                            alt="Farm Market">
+                    </div>
+                </div>
 
-      <!-- 🌿 View Full Gallery Button -->
-      <!-- <div class="mt-4">
+                <!-- Pagination Dots -->
+                <div class="swiper-pagination mt-3"></div>
+            </div>
+
+            <!-- 🌿 View Full Gallery Button -->
+            <!-- <div class="mt-4">
         <button id="viewFullGallery" class="btn btn-accent btn-sm px-4 py-2">
           View Full Gallery
         </button>
       </div> -->
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- ===============================
      LIGHTBOX POPUP
 ================================= -->
 <div id="lightbox">
-  <button class="lightbox-close">&times;</button>
-  <button class="lightbox-prev">&lsaquo;</button>
-  <div class="lightbox-content">
-    <img src="" alt="">
-    <p class="lightbox-caption"></p>
-  </div>
-  <button class="lightbox-next">&rsaquo;</button>
+    <button class="lightbox-close">&times;</button>
+    <button class="lightbox-prev">&lsaquo;</button>
+    <div class="lightbox-content">
+        <img src="" alt="">
+        <p class="lightbox-caption"></p>
+    </div>
+    <button class="lightbox-next">&rsaquo;</button>
 </div>
 
 <!-- ===== END GALLERY SECTION ===== -->
@@ -807,4 +811,93 @@
 </section>
 <!-- ===== END NEWSLETTER SECTION ===== -->
 
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // ===== GALLERY LIGHTBOX =====
+    document.addEventListener('DOMContentLoaded', () => {
+        const galleryItems = document.querySelectorAll('.gallery-item img, .swiper-slide img');
+        const lightbox = document.getElementById('lightbox');
+
+        // ✅ Exit gracefully if lightbox doesn't exist
+        if (!lightbox) return;
+
+        const lightboxImg = lightbox.querySelector('img');
+        const caption = lightbox.querySelector('.lightbox-caption');
+        const closeBtn = lightbox.querySelector('.lightbox-close');
+        const prevBtn = lightbox.querySelector('.lightbox-prev');
+        const nextBtn = lightbox.querySelector('.lightbox-next');
+        const viewFullGalleryBtn = document.getElementById('viewFullGallery');
+
+        // ✅ Also exit if there are no gallery images on the page
+        if (!galleryItems.length) return;
+
+        let currentIndex = 0;
+        const images = Array.from(galleryItems).map(img => ({
+            src: img.src,
+            alt: img.alt || ''
+        }));
+
+        function openLightbox(index) {
+            currentIndex = index;
+            lightboxImg.src = images[currentIndex].src;
+            caption.textContent = images[currentIndex].alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function showNext() {
+            currentIndex = (currentIndex + 1) % images.length;
+            openLightbox(currentIndex);
+        }
+
+        function showPrev() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            openLightbox(currentIndex);
+        }
+
+        // Bind image clicks
+        galleryItems.forEach((img, i) => {
+            img.addEventListener('click', () => openLightbox(i));
+        });
+
+        // Buttons and keys
+        closeBtn?.addEventListener('click', closeLightbox);
+        nextBtn?.addEventListener('click', showNext);
+        prevBtn?.addEventListener('click', showPrev);
+
+        document.addEventListener('keydown', e => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') showNext();
+            if (e.key === 'ArrowLeft') showPrev();
+        });
+
+        // 🌿 Optional: View Full Gallery Button
+        // viewFullGalleryBtn?.addEventListener('click', () => openLightbox(0));
+
+        // ✅ Initialize Swiper only if container exists
+        const swiperEl = document.querySelector('.myGallerySwiper');
+        if (swiperEl) {
+            new Swiper(swiperEl, {
+                slidesPerView: 1.2,
+                spaceBetween: 15,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    480: { slidesPerView: 2 },
+                    768: { slidesPerView: 3 },
+                }
+            });
+        }
+    });
+</script>
 {% endblock %}

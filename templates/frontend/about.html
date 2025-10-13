@@ -1,40 +1,165 @@
 {% extends "./base.html" %}
 {% load static %}
 {% block title %}{{ meta_title }}{% endblock %}
-
-{% block content %}
-<section class="container mx-auto py-10 px-4">
-  <h1 class="text-3xl font-bold mb-6">About Fabstar Limited</h1>
-
-  <p class="mb-4">
-    <strong>Fabstar Limited</strong> is a Nigerian company dedicated to providing
-    high-quality <strong>agricultural products</strong>, <strong>livestock solutions</strong>, and
-    <strong>gas plant services</strong> across the nation.
-  </p>
-
-  <p class="mb-4">
-    Since our founding, we've focused on improving food security, promoting local
-    farming, and ensuring sustainable energy access for Nigerian communities.
-  </p>
-
-  <p class="mb-4">
-    Our mission is to empower farmers, agribusinesses, and industries with reliable
-    products and innovative services that foster growth and sustainability.
-  </p>
-
-  <h2 class="text-2xl font-semibold mt-8 mb-3">Our Core Values</h2>
-  <ul class="list-disc pl-5 space-y-2">
-    <li><strong>Integrity:</strong> Building trust through transparency and honesty.</li>
-    <li><strong>Innovation:</strong> Leveraging technology to enhance agriculture and energy.</li>
-    <li><strong>Sustainability:</strong> Promoting eco-friendly practices for long-term growth.</li>
-    <li><strong>Community:</strong> Empowering local farmers and partners.</li>
-  </ul>
-
-  <h2 class="text-2xl font-semibold mt-8 mb-3">Contact Information</h2>
-  <p class="mb-2">📍 Address: 123 Industrial Road, Lagos, Nigeria</p>
-  <p class="mb-2">📞 Phone: +234 800 000 0000</p>
-  <p class="mb-4">📧 Email: info@fabstarlimited.com</p>
-
-  <a href="{% url 'frontend:home' %}" class="text-blue-600 underline">← Back to Home</a>
-</section>
+{% block extra_css %}
+<style>
+  .text-primary{
+    color: #004851 !important;
+  }
+</style>
 {% endblock %}
+{% block content %}
+<!-- ===== ABOUT HERO SECTION ===== -->
+<section class="about-hero position-relative text-white d-flex align-items-center justify-content-center">
+  <div class="about-overlay"></div>
+
+  <div class="container text-center position-relative fade-up" style="z-index: 2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb justify-content-center mb-3">
+        <li class="breadcrumb-item"><a href="/" class="text-white text-decoration-none">Home</a></li>
+        <li class="breadcrumb-item active text-white" aria-current="page">About Us</li>
+      </ol>
+    </nav>
+    <h1 class="display-4 fw-bold mb-2 fade-up">About Fabstar Limited</h1>
+    <p class="lead fade-up" style="animation-delay: 0.3s;">
+      Delivering freshness, quality, and trust — from our farms to your table.
+    </p>
+  </div>
+
+  <!-- Floating Leaves -->
+  <div class="leaf leaf1"></div>
+  <div class="leaf leaf2"></div>
+  <div class="leaf leaf3"></div>
+</section>
+<!-- ===== END ABOUT HERO SECTION ===== -->
+
+<!-- ===== OUR STORY ===== -->
+<section class="py-5 fade-up-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-md-6 fade-up">
+        <img src="{% static 'frontend/images/heroes/hero-4.jpg' %}"
+          class="img-fluid rounded-4 shadow-sm" alt="Farmers working on field">
+      </div>
+      <div class="col-md-6 fade-up" style="animation-delay: 0.1s;">
+        <h2 class="fw-bold text-primary mb-3">Our Story</h2>
+        <p class="text-muted">
+          FabStar Limited began with a simple vision to empower farmers and agribusinesses with
+          reliable access to quality agricultural products, livestocks, and oil and gas. Over the years, we've grown into a trusted partner
+          for
+          agricultural development, offering innovative solutions and personalized support to ensure every harvest is a
+          success.
+        </p>
+        <p class="text-muted">
+          From smallholder farmers to large commercial farms, we work together to grow a sustainable
+          agricultural future for generations to come.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== END OUR STORY ===== -->
+
+<!-- ===== MISSION & VISION ===== -->
+<section class="py-5 fade-up-section" style="background-color: #f1f8f5;">
+  <div class="container text-center">
+    <h2 class="fw-bold text-primary mb-4 fade-up">Our Mission & Vision</h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-5 fade-up" style="animation-delay: 0.1s;">
+        <div class="p-4 bg-light rounded-4 shadow-sm h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/3069/3069173.png" alt="Mission Icon" width="60" class="mb-3">
+          <h5 class="fw-semibold mb-2">Our Mission</h5>
+          <p class="text-muted">
+            To deliver high-quality agricultural products that help farmers increase productivity, enhance soil health,
+            and
+            cultivate sustainable growth in every region we serve.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-5 fade-up" style="animation-delay: 0.2s;">
+        <div class="p-4 bg-light rounded-4 shadow-sm h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/3221/3221897.png" alt="Vision Icon" width="60" class="mb-3">
+          <h5 class="fw-semibold mb-2">Our Vision</h5>
+          <p class="text-muted">
+            To become Africa's leading agribusiness brand, transforming lives by connecting innovation with the heart of
+            farming — people, land, and nature.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== END MISSION & VISION ===== -->
+
+<!-- ===== CORE VALUES ===== -->
+<section class="py-5 fade-up-section">
+  <div class="container text-center">
+    <h2 class="fw-bold text-primary mb-4 fade-up">Our Core Values</h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-6 col-md-3 fade-up" style="animation-delay: 0.1s;">
+        <div class="p-4 shadow-sm rounded-4 bg-light h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/2907/2907253.png" width="50" class="mb-2" alt="Integrity">
+          <h6 class="fw-semibold">Integrity</h6>
+          <p class="text-muted small">Honest dealings and transparent practices in everything we do.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 fade-up" style="animation-delay: 0.2s;">
+        <div class="p-4 shadow-sm rounded-4 bg-light h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/3048/3048391.png" width="50" class="mb-2"
+            alt="Sustainability">
+          <h6 class="fw-semibold">Sustainability</h6>
+          <p class="text-muted small">Farming practices that care for people and the planet.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 fade-up" style="animation-delay: 0.3s;">
+        <div class="p-4 shadow-sm rounded-4 bg-light h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/4329/4329324.png" width="50" class="mb-2" alt="Innovation">
+          <h6 class="fw-semibold">Innovation</h6>
+          <p class="text-muted small">Modern tools and ideas driving the future of agriculture.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 fade-up" style="animation-delay: 0.4s;">
+        <div class="p-4 shadow-sm rounded-4 bg-light h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/3209/3209929.png" width="50" class="mb-2" alt="Community">
+          <h6 class="fw-semibold">Community</h6>
+          <p class="text-muted small">Empowering farmers and creating value through collaboration.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== END CORE VALUES ===== -->
+
+<!-- ===== CTA SECTION ===== -->
+<section id="join-cta" class="d-flex align-items-center justify-content-center text-center text-light fade-up-section">
+  <div class="overlay"></div>
+  <div class="container position-relative fade-up">
+    <h2 class="fw-bold mb-3">Join the FabStar Agricultural Revolution</h2>
+    <p class="mb-4 lead">Together, we can grow a greener, healthier, and more sustainable future.</p>
+    <a href="{% url 'frontend:contact' %}" class="btn btn-accent px-4 py-2 rounded-pill">Contact Us</a>
+  </div>
+</section>
+<!-- ===== END CTA SECTION ===== -->
+{% endblock %}
+{% block extra_js%}
+<script>
+  // ===== Scroll Fade-Up Animation =====
+  document.addEventListener('DOMContentLoaded', () => {
+    const fadeElements = document.querySelectorAll('.fade-up');
+
+    const appearOptions = {
+      threshold: 0.2,
+    };
+
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    fadeElements.forEach(el => appearOnScroll.observe(el));
+  });
+</script>
+{% endblock%}
