@@ -1,0 +1,19 @@
+{% if breadcrumbs %}
+<nav aria-label="Breadcrumb">
+    <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+        {% for crumb in breadcrumbs %}
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            {% if crumb.url %}
+            <a href="{{ crumb.url }}" itemprop="item">
+                <span itemprop="name">{{ crumb.title }}</span>
+            </a>
+            {% else %}
+            <span itemprop="name">{{ crumb.title }}</span>
+            {% endif %}
+            <meta itemprop="position" content="{{ forloop.counter }}" />
+            {% if not forloop.last %} &gt; {% endif %}
+        </li>
+        {% endfor %}
+    </ol>
+</nav>
+{% endif %}

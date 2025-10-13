@@ -1,0 +1,40 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %}{{ meta_title }}{% endblock %}
+
+{% block content %}
+<section class="container mx-auto py-10 px-4">
+  <h1 class="text-3xl font-bold mb-6">About Fabstar Limited</h1>
+
+  <p class="mb-4">
+    <strong>Fabstar Limited</strong> is a Nigerian company dedicated to providing
+    high-quality <strong>agricultural products</strong>, <strong>livestock solutions</strong>, and
+    <strong>gas plant services</strong> across the nation.
+  </p>
+
+  <p class="mb-4">
+    Since our founding, we've focused on improving food security, promoting local
+    farming, and ensuring sustainable energy access for Nigerian communities.
+  </p>
+
+  <p class="mb-4">
+    Our mission is to empower farmers, agribusinesses, and industries with reliable
+    products and innovative services that foster growth and sustainability.
+  </p>
+
+  <h2 class="text-2xl font-semibold mt-8 mb-3">Our Core Values</h2>
+  <ul class="list-disc pl-5 space-y-2">
+    <li><strong>Integrity:</strong> Building trust through transparency and honesty.</li>
+    <li><strong>Innovation:</strong> Leveraging technology to enhance agriculture and energy.</li>
+    <li><strong>Sustainability:</strong> Promoting eco-friendly practices for long-term growth.</li>
+    <li><strong>Community:</strong> Empowering local farmers and partners.</li>
+  </ul>
+
+  <h2 class="text-2xl font-semibold mt-8 mb-3">Contact Information</h2>
+  <p class="mb-2">📍 Address: 123 Industrial Road, Lagos, Nigeria</p>
+  <p class="mb-2">📞 Phone: +234 800 000 0000</p>
+  <p class="mb-4">📧 Email: info@fabstarlimited.com</p>
+
+  <a href="{% url 'frontend:home' %}" class="text-blue-600 underline">← Back to Home</a>
+</section>
+{% endblock %}

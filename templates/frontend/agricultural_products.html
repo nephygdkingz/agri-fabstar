@@ -1,0 +1,41 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %}{{ meta_title }}{% endblock %}
+
+{% block content %}
+<section class="container mx-auto py-10 px-4">
+    <h1 class="text-3xl font-bold mb-6">Agricultural Products</h1>
+
+    <p class="mb-6 text-gray-700">
+        Fabstar Limited provides a range of high-quality agricultural inputs and tools
+        to help Nigerian farmers achieve better yields and sustainable growth.
+    </p>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {% for product in products %}
+        <div class="border rounded-lg shadow-sm hover:shadow-md transition p-3">
+            <img src="{{ product.image }}" alt="{{ product.name }}" class="rounded w-full h-40 object-cover mb-3" />
+            <h2 class="font-semibold text-lg mb-1">{{ product.name }}</h2>
+            <p class="text-sm text-gray-600">{{ product.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="mt-10">
+        <h2 class="text-2xl font-semibold mb-3">Why Choose Our Agricultural Products?</h2>
+        <ul class="list-disc pl-5 space-y-2">
+            <li>✅ Sourced from trusted local and international suppliers</li>
+            <li>🌱 Suitable for Nigerian soil and climate</li>
+            <li>🚜 Boosts productivity and profit margins</li>
+            <li>♻️ Environmentally friendly and safe</li>
+        </ul>
+    </div>
+
+    <div class="mt-10">
+        <p class="text-center text-gray-700">
+            Need bulk supplies or partnership inquiries?
+            <a href="{% url 'frontend:contact' %}" class="text-blue-600 underline">Contact us</a>.
+        </p>
+    </div>
+</section>
+{% endblock %}

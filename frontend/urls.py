@@ -6,4 +6,7 @@ app_name = "frontend"
 
 urlpatterns = [
     path('', views.home_view, name="home"),
+    path("about/", views.about_view, name="about"),
+    path("contact/", views.contact_view, name="contact"),
+    path("agricultural-products/", views.agricultural_products_view, name="agricultural_products"),
 ]

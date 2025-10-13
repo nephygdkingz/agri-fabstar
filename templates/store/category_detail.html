@@ -1,0 +1,25 @@
+{% extends "../frontend/base.html" %}
+{% block title %}{{ meta_title }}{% endblock %}
+
+{% block content %}
+<section class="container mx-auto py-10 px-4">
+  <h1 class="text-3xl font-bold mb-6">{{ category.name }}</h1>
+  <p class="mb-4 text-gray-700">{{ category.description }}</p>
+
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    {% for product in products %}
+    <div class="border rounded-lg p-3 shadow-sm hover:shadow-md transition">
+      <a href="{{ product.get_absolute_url }}">
+        {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-40 object-cover rounded mb-3">
+        {% endif %}
+        <h2 class="font-semibold text-lg">{{ product.name }}</h2>
+      </a>
+      <p class="text-sm text-gray-600">{{ product.short_description|truncatechars:100 }}</p>
+    </div>
+    {% empty %}
+    <p>No products available under this category yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
