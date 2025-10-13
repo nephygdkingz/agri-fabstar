@@ -1017,13 +1017,25 @@
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes zoomIn {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* ===============================
@@ -1158,9 +1170,11 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -1170,9 +1184,11 @@
 .about-hero .breadcrumb {
   background: transparent;
 }
-.about-hero .breadcrumb-item + .breadcrumb-item::before {
+
+.about-hero .breadcrumb-item+.breadcrumb-item::before {
   color: rgba(255, 255, 255, 0.6);
 }
+
 .about-hero .breadcrumb a:hover {
   text-decoration: underline;
 }
@@ -1195,12 +1211,14 @@
   animation-delay: 0s;
   animation-duration: 22s;
 }
+
 .leaf2 {
   top: 50%;
   left: 60%;
   animation-delay: 4s;
   animation-duration: 25s;
 }
+
 .leaf3 {
   top: 70%;
   left: 80%;
@@ -1213,10 +1231,12 @@
     transform: translateY(0) rotate(0deg);
     opacity: 0.2;
   }
+
   50% {
     transform: translateY(-20px) rotate(15deg);
     opacity: 0.25;
   }
+
   100% {
     transform: translateY(0) rotate(0deg);
     opacity: 0.2;
@@ -1252,6 +1272,7 @@
   background: var(--color-light);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .value-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
@@ -1265,9 +1286,17 @@
 }
 
 @keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* ===== Team ===== */
@@ -1275,12 +1304,12 @@
   background: var(--color-light);
   border-radius: 1rem;
   transition: transform 0.28s ease, box-shadow 0.28s ease;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
 .team-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
 }
 
 /* Avatar sizing and border */
@@ -1289,7 +1318,7 @@
   height: 110px;
   border-radius: 50%;
   overflow: hidden;
-  border: 4px solid rgba(40,209,102,0.08);
+  border: 4px solid rgba(40, 209, 102, 0.08);
   display: inline-block;
 }
 
@@ -1306,7 +1335,123 @@
 
 /* Responsive tweaks */
 @media (max-width: 576px) {
-  .team-card .avatar { width: 90px; height: 90px; }
-  .team-card { padding: 1rem; }
+  .team-card .avatar {
+    width: 90px;
+    height: 90px;
+  }
+
+  .team-card {
+    padding: 1rem;
+  }
 }
 
+/* ===== END ABOUT PAGE STYLES ===== */
+
+
+/* ===== CONTACT PAGE CUSTOM STYLES ===== */
+.contact-hero {
+  position: relative;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: #fff;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.contact-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=60") center/cover no-repeat;
+  opacity: 0.25;
+  z-index: 0;
+}
+
+.contact-hero .content {
+  position: relative;
+  z-index: 1;
+}
+
+.breadcrumb {
+  background: transparent;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.breadcrumb-item a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* Info cards */
+.contact-info .card {
+  border: none;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-info .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info .bi {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+/* Map */
+#map {
+  height: 400px;
+  width: 100%;
+  border-radius: 15px;
+  z-index: 1;
+}
+
+/* Form */
+.contact-form button {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: var(--color-secondary);
+}
+
+/* ===== MAP CONTAINER STYLING ===== */
+#map {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+#map iframe {
+  width: 100%;
+  height: 400px;
+  border: 0;
+  display: block;
+  border-radius: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #map iframe {
+    height: 300px;
+  }
+}
