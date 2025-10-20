@@ -27,7 +27,9 @@ class Product(models.Model):
     short_description = models.TextField(max_length=300)
     long_description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+    old_price = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     is_featured = models.BooleanField(default=False)
+    is_available = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

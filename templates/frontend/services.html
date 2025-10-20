@@ -76,4 +76,24 @@
   </div>
 </section>
 
+
+<!-- JSON-LD structured data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "provider": {
+    "@type": "Organization",
+    "name": "Fabstar Limited",
+    "url": "{{ canonical_url|default:request.build_absolute_uri }}",
+    "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo/logo.png' %}"
+  },
+  "serviceType": "Agricultural Products, Livestock Sales, Gas Plant Retail",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Nigeria"
+  },
+  "description": "{{ meta_description|escape }}"
+}
+</script>
 {% endblock %}

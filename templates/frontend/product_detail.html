@@ -1,0 +1,254 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block title %}{{ meta_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+{% block canonical %}{{ canonical_url }}{% endblock %}
+
+{% block content %}
+<!-- ===== PRODUCT HERO ===== -->
+<section class="product-hero d-flex align-items-center justify-content-center text-center text-white">
+    <div class="container fade-up">
+        <h1 class="fw-bold mb-3">Product Details</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a href="{% url 'frontend:home' %}"
+                        class="text-white text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'frontend:product_list' %}"
+                        class="text-white text-decoration-none">Products</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">Product Detail</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- ===== PRODUCT DETAIL ===== -->
+<section class="product-detail py-5">
+    <div class="container">
+        <div class="row align-items-center g-5 fade-up">
+            <!-- Product Image Gallery -->
+            <div class="col-md-6">
+                <div class="main-img mb-3">
+                    <img id="mainProductImg"
+                        src="https://images.unsplash.com/photo-1603190287605-e6ade32fa852?q=80&w=800"
+                        class="img-fluid rounded-4 shadow-sm" alt="Yam Tubers">
+                </div>
+                <div class="thumbs d-flex gap-2 justify-content-center">
+                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=800"
+                        class="thumb-img active rounded-3" alt="">
+                    <img src="https://images.unsplash.com/photo-1603190287605-e6ade32fa852?q=80&w=800"
+                        class="thumb-img rounded-3" alt="">
+                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=800"
+                        class="thumb-img rounded-3" alt="">
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="col-md-6">
+                <h2 class="fw-bold mb-3">Yam Tubers</h2>
+                <p class="text-muted mb-3">Freshly harvested organic yam tubers directly from our farm.</p>
+                <h4 class="text-primary fw-semibold mb-3">₦1,200 <small class="text-muted fs-6">/ each</small></h4>
+
+                <div class="mb-3">
+                    <label for="quantity" class="form-label fw-semibold">Quantity</label>
+                    <input type="number" id="quantity" class="form-control w-25" value="1" min="1">
+                </div>
+
+                <button class="btn btn-accent btn-lg px-4 mt-3">Add to Cart</button>
+
+                <hr class="my-4">
+
+                <ul class="list-unstyled text-muted small">
+                    <li>✅ 100% organic</li>
+                    <li>🚚 Fast nationwide delivery</li>
+                    <li>💳 Secure payment options</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Product Description -->
+        <div class="mt-5 fade-up">
+            <h4 class="fw-bold mb-3">Product Description</h4>
+            <p class="text-muted">
+                Our yam tubers are grown using natural methods without synthetic fertilizers.
+                Perfect for cooking local dishes such as pounded yam, porridge, and fries. We ensure
+                every tuber is clean, firm, and free from rot before packaging for delivery.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== RELATED PRODUCTS ===== -->
+<section class="related-products py-5 bg-light">
+    <div class="container">
+        <h3 class="fw-bold text-center text-primary mb-4 fade-up">Related Products</h3>
+
+        <div class="swiper myRelatedSwiper fade-up">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide" style="margin-right: 10px;">
+                    <div class="card product-card">
+                        <div class="img-wrap">
+                            <img loading="lazy"
+                                src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=500&q=60"
+                                alt="Seed bag product">
+                        </div>
+                        <div class="p-3">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <h6 class="mb-1">{{product.name}}</h6>
+                                    <!-- <h6 class="mb-1"><a href="{% url 'frontend:product_detail' product.slug %}">{{product.name}}</a></h6> -->
+                                    <!-- <small class="text-muted">{{product.short_description}}</small> -->
+                                    <a href="{% url 'frontend:product_detail' product.slug %}">View Details</a>
+                                </div>
+                                <div class="text-end">
+                                    <div class="badge-discount">-20%</div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div class="fw-bold">₦{{product.price}}</div>
+                                    <small
+                                        class="text-muted text-decoration-line-through">₦{{product.old_price}}</small>
+                                </div>
+                                <div>
+                                    <button class="btn btn-sm btn-outline-secondary me-1"><i
+                                            class="bi bi-heart"></i></button>
+                                    <button class="btn btn-sm btn-primary-custom">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="swiper-slide">
+                    <div class="card product-card">
+                        <div class="img-wrap">
+                            <img loading="lazy"
+                                src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=500&q=60"
+                                alt="Seed bag product">
+                        </div>
+                        <div class="p-3">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <h6 class="mb-1">{{product.name}}</h6>
+                                    <!-- <h6 class="mb-1"><a href="{% url 'frontend:product_detail' product.slug %}">{{product.name}}</a></h6> -->
+                                    <!-- <small class="text-muted">{{product.short_description}}</small> -->
+                                    <a href="{% url 'frontend:product_detail' product.slug %}">View Details</a>
+                                </div>
+                                <div class="text-end">
+                                    <div class="badge-discount">-20%</div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div class="fw-bold">₦{{product.price}}</div>
+                                    <small
+                                        class="text-muted text-decoration-line-through">₦{{product.old_price}}</small>
+                                </div>
+                                <div>
+                                    <button class="btn btn-sm btn-outline-secondary me-1"><i
+                                            class="bi bi-heart"></i></button>
+                                    <button class="btn btn-sm btn-primary-custom">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination mt-3"></div>
+        </div>
+    </div>
+</section>
+
+<!-- JSON-LD Schema for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "{{ product.name|escape }}",
+  "image": "{% if product.image %}{{ request.scheme }}://{{ request.get_host }}{{ product.image.url }}{% endif %}",
+  "description": "{{ product.description|truncatewords:40|escape }}",
+  "sku": "{{ product.id }}",
+  "brand": {
+    "@type": "Organization",
+    "name": "Fabstar Limited"
+  },
+  "category": "{{ product.category.name|escape }}",
+  "offers": {
+    "@type": "Offer",
+    "url": "{{ request.scheme }}://{{ request.get_host }}{{ product.get_absolute_url }}",
+    "priceCurrency": "NGN",
+    "price": "{{ product.price }}",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Fabstar Limited"
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'frontend:home' %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Products",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'frontend:product_list' %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ product.name|escape }}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{{ product.get_absolute_url }}"
+    }
+  ]
+}
+</script>
+
+{% endblock %}
+{% block extra_js %}
+<script>
+    // ===== PRODUCT IMAGE SWITCH =====
+    document.addEventListener('DOMContentLoaded', () => {
+        const thumbs = document.querySelectorAll('.thumb-img');
+        const mainImg = document.getElementById('mainProductImg');
+
+        if (thumbs.length && mainImg) {
+            thumbs.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    thumbs.forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+                    mainImg.src = thumb.src;
+                });
+            });
+        }
+
+        // ===== SWIPER FOR RELATED PRODUCTS =====
+        if (document.querySelector('.myRelatedSwiper')) {
+            new Swiper('.myRelatedSwiper', {
+                slidesPerView: 1.5,
+                spaceBetween: 15,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    576: { slidesPerView: 2 },
+                    992: { slidesPerView: 4 },
+                },
+            });
+        }
+    });
+
+</script>
+{% endblock %}

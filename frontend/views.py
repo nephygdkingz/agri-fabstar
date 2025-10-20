@@ -1,8 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.urls import reverse
 from django.core.mail import EmailMessage
 from django.http import HttpResponse
+from django.db.models import Q
+
+from store.models import Product
 
 def home_view(request):
     context = {
@@ -42,35 +45,9 @@ def services(request):
         "Fabstar Limited offers premium agricultural products, healthy livestock, "
         "and safe gas retail services across Nigeria. Supplying farms, homes, and businesses."
     )
-    
-    services = [
-        {
-            "title": "Agricultural Products",
-            "slug": "agricultural-products",
-            "description": "We supply and distribute high-quality grains, fertilizers, feeds, and farm produce sourced from trusted Nigerian farmers.",
-            "icon": "🌾",
-            "image": "/static/images/services/agriculture.jpg",
-        },
-        {
-            "title": "Livestock Sales",
-            "slug": "livestock",
-            "description": "Our livestock division provides healthy cattle, goats, poultry, and other animals raised under professional veterinary care.",
-            "icon": "🐄",
-            "image": "/static/images/services/livestock.jpg",
-        },
-        {
-            "title": "Gas Plant (Retail & Supply)",
-            "slug": "gas-plant",
-            "description": "We operate a modern gas plant that sells and refills LPG safely for homes, restaurants, and industrial users.",
-            "icon": "⛽",
-            "image": "/static/images/services/gas.jpg",
-        },
-    ]
-
     context = {
         "meta_title": meta_title,
         "meta_description": meta_description,
-        "services": services,
     }
 
     return render(request, "frontend/services.html", context)
@@ -162,3 +139,48 @@ def robots_txt(request):
         f"Sitemap: {request.build_absolute_uri('/sitemap.xml')}",
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
+
+
+def product_list(request):
+    products = Product.objects.filter(is_available=True).select_related("category")
+
+    meta_title = "Order Products - Fabstar Limited"
+    meta_description = (
+        "Order high-quality agricultural products, livestock, and gas supplies from Fabstar Limited. "
+        "Reliable and affordable products across Nigeria."
+    )
+    context = {
+        "products": products,
+        "meta_title": meta_title,
+        "meta_description": meta_description,
+    }
+    return render(request, "frontend/product_list.html", context)
+
+
+def product_detail(request, slug):
+    product = get_object_or_404(Product.objects.select_related("category"), slug=slug, is_available=True)
+
+    # Get related products from the same category (excluding current one)
+    related_products = (
+        Product.objects.filter(
+            Q(category=product.category) & ~Q(id=product.id),
+            is_available=True
+        )
+        .select_related("category")
+        .order_by("?")[:4]  # random 4 items
+    )
+
+    meta_title = f"{product.name} - Fabstar Limited"
+    meta_description = (
+        f"Buy {product.name} from Fabstar Limited. {product.short_description[:150]} "
+        "Available for customers across Nigeria."
+    )
+
+    context = {
+        "product": product,
+        "related_products": related_products,
+        "meta_title": meta_title,
+        "meta_description": meta_description,
+    }
+
+    return render(request, "frontend/product_detail.html", context)

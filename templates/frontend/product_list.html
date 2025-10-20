@@ -1,0 +1,112 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block title %}{{ meta_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<!-- ===== HERO / BANNER ===== -->
+<section class="services-hero d-flex align-items-center justify-content-center text-center text-white">
+    <div class="container fade-up">
+        <h1 class="display-4 fw-bold mb-2 fade-up">Our Prducts</h1>
+        <p class="lead fade-up" style="animation-delay: 0.3s;">
+            Fresh Agricultural products, healthy livestock, and safe gas retail services across Nigeria.
+        </p>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a href="{% url 'frontend:home' %}"
+                        class="text-white text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">Services</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- ===== PRODUCT SECTION ===== -->
+<section class="products-section py-5">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4 fade-up">
+            <h2 class="fw-bold text-primary mb-0">Explore Our Products</h2>
+            <!-- Sorter -->
+            <div class="sorter">
+                <label for="sortCategory" class="me-2 fw-semibold">Sort by:</label>
+                <select id="sortCategory" class="form-select">
+                    <option value="all" selected>All Categories</option>
+                    <option value="agriculture">Agricultural Products</option>
+                    <option value="livestock">Livestock</option>
+                    <option value="gas">Gas Plant</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- PRODUCT GRID -->
+        <div class="row g-4" id="productGrid">
+
+            <!-- Product 1 -->
+            {% for product in products %}
+            <div class="col-md-6 col-lg-3 fade-up" data-category="agriculture">
+                <div class="card product-card">
+                    <div class="img-wrap">
+                        <img loading="lazy"
+                            src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=500&q=60"
+                            alt="Seed bag product">
+                    </div>
+                    <div class="p-3">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <div>
+                                <h6 class="mb-1">{{product.name}}</h6>
+                                <!-- <h6 class="mb-1"><a href="{% url 'frontend:product_detail' product.slug %}">{{product.name}}</a></h6> -->
+                                <!-- <small class="text-muted">{{product.short_description}}</small> -->
+                                 <a href="{% url 'frontend:product_detail' product.slug %}">View Details</a>
+                            </div>
+                            <div class="text-end">
+                                <div class="badge-discount">-20%</div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <div class="fw-bold">₦{{product.price}}</div>
+                                <small class="text-muted text-decoration-line-through">₦{{product.old_price}}</small>
+                            </div>
+                            <div>
+                                <button class="btn btn-sm btn-outline-secondary me-1"><i
+                                        class="bi bi-heart"></i></button>
+                                <button class="btn btn-sm btn-primary-custom">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<!-- Structured Data for Products -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Fabstar Limited Products",
+  "itemListElement": [
+    {% for product in products %}
+    {
+      "@type": "Product",
+      "name": "{{ product.name|escape }}",
+      "image": "{% if product.image %}{{ request.scheme }}://{{ request.get_host }}{{ product.image.url }}{% endif %}",
+      "description": "{{ product.description|truncatewords:25|escape }}",
+      "url": "{{ request.scheme }}://{{ request.get_host }}{{ product.get_absolute_url }}",
+      "category": "{{ product.category.name|escape }}",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "NGN",
+        "price": "{{ product.price }}",
+        "availability": "https://schema.org/InStock"
+      }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
