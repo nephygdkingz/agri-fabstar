@@ -1,5 +1,5 @@
 Django>=4.0,<5.0
 python-dotenv
-django-cockroachdb
+django-cockroachdb==4.2
 psycopg2-binary
 dj_database_url
