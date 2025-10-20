@@ -53,6 +53,10 @@
   background: #276a28;
 }
 
+.text-primary {
+  color: #004851 !important;
+}
+
 /* ===== Scroll Animations ===== */
 .fade-up {
   opacity: 0;
@@ -1366,7 +1370,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: url("https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=60") center/cover no-repeat;
+  background: url("/static/frontend/images/livestock/gasplant-3.jpg") center/cover no-repeat;
   opacity: 0.25;
   z-index: 0;
 }
@@ -1453,5 +1457,77 @@
 @media (max-width: 768px) {
   #map iframe {
     height: 300px;
+  }
+}
+
+
+
+
+/* ===== SERVICE SECTIONS ===== */
+
+/* ===== HERO BANNER ===== */
+.services-hero {
+  height: 58vh;
+  background: linear-gradient(-45deg, var(--color-accent), var(--color-primary), var(--color-accent), var(--color-primary));
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  position: relative;
+}
+
+.services-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.services-hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* other parts */
+.services {
+  background-color: #f8f9fa;
+}
+
+.service-img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.4s ease;
+}
+
+.service-img:hover {
+  transform: scale(1.03);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .services .row {
+    text-align: center;
+  }
+
+  .services h2 {
+    margin-top: 1.5rem;
+  }
+
+  .service-img {
+    max-height: 300px;
   }
 }

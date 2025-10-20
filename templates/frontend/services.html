@@ -1,0 +1,79 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block title %}{{ meta_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<!-- ===== HERO / BANNER ===== -->
+<section class="services-hero d-flex align-items-center justify-content-center text-center text-white">
+  <div class="container fade-up">
+    <h1 class="display-4 fw-bold mb-2 fade-up">Our Services</h1>
+    <p class="lead fade-up" style="animation-delay: 0.3s;">
+      Fresh Agricultural products, healthy livestock, and safe gas retail services across Nigeria.
+    </p>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="{% url 'frontend:home' %}" class="text-white text-decoration-none">Home</a></li>
+        <li class="breadcrumb-item active text-white" aria-current="page">Services</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<!-- ===== SERVICES SECTION ===== -->
+<section class="services py-5">
+  <div class="container">
+    
+    <!-- Service 1 -->
+    <div class="row align-items-center mb-5 fade-up">
+      <div class="col-lg-6">
+        <h2 class="fw-bold text-primary mb-3">Agricultural Products</h2>
+        <p class="text-muted">
+          From freshly harvested crops to processed produce, we supply nutritious farm products that
+          meet both local and export standards. Our mission is to promote sustainable farming while
+          ensuring food security and freshness for our customers.
+        </p>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img src="{% static 'frontend/images/livestock/livestock-3.jpg' %}" 
+             alt="Agricultural Products" class="img-fluid service-img rounded shadow">
+      </div>
+    </div>
+
+    <!-- Service 2 -->
+    <div class="row align-items-center mb-5 flex-lg-row-reverse fade-up" data-aos-delay="100">
+      <div class="col-lg-6">
+        <h2 class="fw-bold text-primary mb-3">Livestock Farming</h2>
+        <p class="text-muted">
+          Our livestock operations are built on ethical and natural rearing practices, ensuring healthy
+          and productive animals. We provide high-quality meat and dairy products that support both
+          local markets and large-scale buyers.
+        </p>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img src="{% static 'frontend/images/livestock/livestock-1.jpg' %}" 
+             alt="Livestock Farming" class="img-fluid service-img rounded shadow">
+      </div>
+    </div>
+
+    <!-- Service 3 -->
+    <div class="row align-items-center fade-up" data-aos-delay="200">
+      <div class="col-lg-6">
+        <h2 class="fw-bold text-primary mb-3">Gas Plant Operations</h2>
+        <p class="text-muted">
+          Our gas plant provides reliable LPG distribution for homes and industries, promoting cleaner
+          energy use and supporting sustainable development across communities. Safety, efficiency, and
+          eco-friendliness are at the heart of what we do.
+        </p>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img src="{% static 'frontend/images/livestock/gasplant-3.jpg' %}"
+             alt="Gas Plant" class="img-fluid service-img rounded shadow">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

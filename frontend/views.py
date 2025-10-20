@@ -18,6 +18,9 @@ def home_view(request):
     }
     return render(request, 'frontend/index.html', context)
 
+def services():
+    pass
+
 def about_view(request):
     context = {
         "meta_title": "About Fabstar Limited | Agricultural, Livestock & Gas Experts in Nigeria",
@@ -32,6 +35,45 @@ def about_view(request):
         ],
     }
     return render(request, "frontend/about2.html", context)
+
+def services(request):
+    meta_title = "Our Services - Fabstar Limited"
+    meta_description = (
+        "Fabstar Limited offers premium agricultural products, healthy livestock, "
+        "and safe gas retail services across Nigeria. Supplying farms, homes, and businesses."
+    )
+    
+    services = [
+        {
+            "title": "Agricultural Products",
+            "slug": "agricultural-products",
+            "description": "We supply and distribute high-quality grains, fertilizers, feeds, and farm produce sourced from trusted Nigerian farmers.",
+            "icon": "🌾",
+            "image": "/static/images/services/agriculture.jpg",
+        },
+        {
+            "title": "Livestock Sales",
+            "slug": "livestock",
+            "description": "Our livestock division provides healthy cattle, goats, poultry, and other animals raised under professional veterinary care.",
+            "icon": "🐄",
+            "image": "/static/images/services/livestock.jpg",
+        },
+        {
+            "title": "Gas Plant (Retail & Supply)",
+            "slug": "gas-plant",
+            "description": "We operate a modern gas plant that sells and refills LPG safely for homes, restaurants, and industrial users.",
+            "icon": "⛽",
+            "image": "/static/images/services/gas.jpg",
+        },
+    ]
+
+    context = {
+        "meta_title": meta_title,
+        "meta_description": meta_description,
+        "services": services,
+    }
+
+    return render(request, "frontend/services.html", context)
 
 def contact_view(request):
     if request.method == "POST":
