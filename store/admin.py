@@ -4,7 +4,7 @@ from .models import Category, Product, ProductMedia
 
 admin.site.register(Category)
 
-class ProductMediaInline(admin.TabularInline):  # or StackedInline for image previews
+class ProductMediaInline(admin.TabularInline):  
     model = ProductMedia
     extra = 1
     fields = ['image', 'alt_text', 'is_featured']
