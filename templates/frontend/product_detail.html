@@ -45,9 +45,9 @@
 
             <!-- Product Info -->
             <div class="col-md-6">
-                <h2 class="fw-bold mb-3">Yam Tubers</h2>
+                <h2 class="fw-bold mb-3">{{product.name}}</h2>
                 <p class="text-muted mb-3">Freshly harvested organic yam tubers directly from our farm.</p>
-                <h4 class="text-primary fw-semibold mb-3">₦1,200 <small class="text-muted fs-6">/ each</small></h4>
+                <h4 class="text-primary fw-semibold mb-3">₦{{product.price}} <small class="text-muted fs-6">/ each</small></h4>
 
                 <div class="mb-3">
                     <label for="quantity" class="form-label fw-semibold">Quantity</label>
@@ -70,9 +70,7 @@
         <div class="mt-5 fade-up">
             <h4 class="fw-bold mb-3">Product Description</h4>
             <p class="text-muted">
-                Our yam tubers are grown using natural methods without synthetic fertilizers.
-                Perfect for cooking local dishes such as pounded yam, porridge, and fries. We ensure
-                every tuber is clean, firm, and free from rot before packaging for delivery.
+                {{product.long_description}}
             </p>
         </div>
     </div>

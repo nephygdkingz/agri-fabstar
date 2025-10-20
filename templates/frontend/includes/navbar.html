@@ -61,17 +61,16 @@
         <button class="close-btn" id="closeSidebar">&times;</button>
         <ul class="list-unstyled mt-4">
             <li><a href="{% url 'frontend:home' %}">Home</a></li>
-            <li><a href="{% url 'frontend:agricultural_products' %}">Product & Services</a></li>
-            <li><a href="{% url 'frontend:agricultural_products' %}">Order</a></li>
-            <li><a href="#">Order</a></li>
+            <li><a href="{% url 'frontend:services' %}">Services</a></li>
+            <li><a href="{% url 'frontend:product_list' %}">Order</a></li>
             <li><a href="{% url 'frontend:about' %}">About Us</a></li>
             <li><a href="{% url 'frontend:about' %}">Blog</a></li>
             <li><a href="{% url 'frontend:contact' %}">Contact Us</a></li>
         </ul>
-        <form class="mt-3 px-3">
+        <!-- <form class="mt-3 px-3">
             <input type="text" class="form-control mb-2" placeholder="Search...">
             <button class="btn btn-success w-100">Search</button>
-        </form>
+        </form> -->
     </div>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 </header>
