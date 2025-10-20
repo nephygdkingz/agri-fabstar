@@ -1,29 +1,29 @@
 import os
-import environ
+import dj_database_url
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Initialize environment variables
-env = environ.Env(
-    # Set default values and casting
-    DEBUG=(bool, False)
-)
-
-# Read .env file
-environ.Env.read_env(BASE_DIR / '.env')
+# Load environment variables
+load_dotenv(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost'])
+# ALLOWED_HOSTS (split on commas and strip spaces)
+ALLOWED_HOSTS = [h.strip() for h in os.getenv('ALLOWED_HOSTS', '').split(',') if h.strip()]
+
+# Fallback for local dev if .env doesn’t include ALLOWED_HOSTS
+if not ALLOWED_HOSTS:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -91,18 +91,27 @@ WSGI_APPLICATION = 'base.wsgi.application'
 #     }
 # }
 
-# Default SQLite URL
-DEFAULT_SQLITE_URL = f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
+# Get DATABASE_URL or default to SQLite
+DATABASE_URL = os.environ.get('DATABASE_URL')
 
-# Read DATABASE_URL or fallback to SQLite
-DATABASES = {
-    'default': env.db(default=DEFAULT_SQLITE_URL)
-}
-
-# If CockroachDB is used, enforce correct engine
-if 'cockroach' in DATABASES['default']['NAME'].lower() or '26257' in DATABASES['default']['HOST']:
-    DATABASES['default']['ENGINE'] = 'django_cockroachdb'
-
+if DATABASE_URL:
+    # Use CockroachDB (production)
+    DATABASES = {
+        'default': dj_database_url.parse(
+            DATABASE_URL,
+            engine='django_cockroachdb'
+        )
+    }
+    print("🪶 Using CockroachDB / PostgreSQL backend")
+else:
+    # Fallback to SQLite (local)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+    print("💾 Using SQLite fallback database")
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
