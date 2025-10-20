@@ -84,12 +84,24 @@ WSGI_APPLICATION = 'base.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# Default SQLite URL
+DEFAULT_SQLITE_URL = f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
+
+# Read DATABASE_URL or fallback to SQLite
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': env.db(default=DEFAULT_SQLITE_URL)
 }
+
+# If CockroachDB is used, enforce correct engine
+if 'cockroach' in DATABASES['default']['NAME'].lower() or '26257' in DATABASES['default']['HOST']:
+    DATABASES['default']['ENGINE'] = 'django_cockroachdb'
 
 
 # Password validation
