@@ -3,3 +3,6 @@ python-dotenv
 django-cockroachdb==4.2
 psycopg2-binary
 dj_database_url
+cloudinary
+django-cloudinary-storage
+Pillow

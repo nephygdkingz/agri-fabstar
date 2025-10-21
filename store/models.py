@@ -78,7 +78,7 @@ class Product(models.Model):
 class ProductMedia(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='media')
     # image = CloudinaryField('image', null=True, default=None, blank=True)
-    image = models.FileField(upload_to='product_media/')
+    image = models.ImageField(upload_to='product_image/')
     alt_text = models.CharField(max_length=255, blank=True)
     is_featured = models.BooleanField(default=False)
 
