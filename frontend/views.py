@@ -5,10 +5,12 @@ from django.core.mail import EmailMessage
 from django.http import HttpResponse
 from django.db.models import Q
 
-from store.models import Product
+from store.models import Product, Category
 
 def home_view(request):
+    featured_products = Product.objects.filter(is_available=True,is_featured=True)
     context = {
+        "featured_products": featured_products,
         "meta_title": "Fabstar Limited | Agricultural, Livestock & Gas Solutions in Nigeria",
         "meta_description": (
             "Welcome to Fabstar Limited — your one-stop Nigerian marketplace for high-quality "
@@ -142,7 +144,9 @@ def robots_txt(request):
 
 
 def product_list(request):
-    products = Product.objects.filter(is_available=True).select_related("category")
+    # products = Product.objects.filter(is_available=True).select_related("category")
+    products = Product.objects.filter(is_available=True)
+    categories = Category.objects.all()
 
     meta_title = "Order Products - Fabstar Limited"
     meta_description = (
@@ -151,6 +155,7 @@ def product_list(request):
     )
     context = {
         "products": products,
+        "categories": categories,
         "meta_title": meta_title,
         "meta_description": meta_description,
     }

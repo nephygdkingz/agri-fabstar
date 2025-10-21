@@ -47,7 +47,7 @@
             <!-- Product Info -->
             <div class="col-md-6">
                 <h2 class="fw-bold mb-3">{{product.name}}</h2>
-                <p class="text-muted mb-3">Freshly harvested organic yam tubers directly from our farm.</p>
+                <p class="text-muted mb-3">{{product.short_description}}</p>
                 <h4 class="text-primary fw-semibold mb-3">₦{{product.price|floatformat:0|intcomma}} 
                 {% if product.is_each %}
                     <small class="text-muted fs-6">/ each</small>

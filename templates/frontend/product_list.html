@@ -32,10 +32,10 @@
             <div class="sorter">
                 <label for="sortCategory" class="me-2 fw-semibold">Sort by:</label>
                 <select id="sortCategory" class="form-select">
-                    <option value="all" selected>All Categories</option>
-                    <option value="agriculture">Agricultural Products</option>
-                    <option value="livestock">Livestock</option>
-                    <option value="gas">Gas Plant</option>
+                    <option value="all">All Categories</option>
+                    {% for cat in categories %}
+                    <option value="{{ cat.slug }}">{{ cat.name }}</option>
+                    {% endfor %}
                 </select>
             </div>
         </div>
@@ -45,12 +45,10 @@
 
             <!-- Product 1 -->
             {% for product in products %}
-            <div class="col-md-6 col-lg-3 fade-up" data-category="agriculture">
+            <div class="col-md-6 col-lg-3 fade-up" data-category="{{ product.category.slug }}">
                 <div class="card product-card">
                     <div class="img-wrap">
-                        <img loading="lazy"
-                            src="{{ product.featured_image }}"
-                            alt="Seed bag product">
+                        <img loading="lazy" src="{{ product.featured_image }}" alt="Seed bag product">
                     </div>
                     <div class="p-3">
                         <div class="d-flex justify-content-between align-items-start mb-2">
@@ -58,12 +56,12 @@
                                 <h6 class="mb-1">{{product.name}}</h6>
                                 <!-- <h6 class="mb-1"><a href="{% url 'frontend:product_detail' product.slug %}">{{product.name}}</a></h6> -->
                                 <!-- <small class="text-muted">{{product.short_description}}</small> -->
-                                 <a href="{% url 'frontend:product_detail' product.slug %}">View Details</a>
+                                <a href="{% url 'frontend:product_detail' product.slug %}">View Details</a>
                             </div>
                             {% if product.has_discount %}
-                                <div class="text-end">
-                                    <div class="badge-discount">-{{product.sale_percent}}%</div>
-                                </div>
+                            <div class="text-end">
+                                <div class="badge-discount">-{{product.sale_percent}}%</div>
+                            </div>
                             {% endif %}
                         </div>
                         <div class="d-flex align-items-center justify-content-between">
@@ -71,7 +69,8 @@
                                 <div class="fw-bold">₦{{product.price|floatformat:0|intcomma}}</div>
 
                                 {% if product.has_discount %}
-                                    <small class="text-muted text-decoration-line-through">₦{{product.old_price|floatformat:0|intcomma}}</small>
+                                <small
+                                    class="text-muted text-decoration-line-through">₦{{product.old_price|floatformat:0|intcomma}}</small>
                                 {% endif %}
                             </div>
                             <div>
@@ -115,4 +114,53 @@
   ]
 }
 </script>
+{% endblock %}
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const select = document.getElementById('sortCategory');
+        const grid = document.getElementById('productGrid');
+        const cards = grid.querySelectorAll('[data-category]');
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentCategory = urlParams.get('category') || 'all';
+
+        console.log(select)
+        // Set the dropdown to the current category from URL
+        select.value = currentCategory;
+
+        // Function to filter products
+        function filterProducts(category) {
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-category').toLowerCase();
+                card.style.display = (category === 'all' || category === cardCat) ? '' : 'none';
+            });
+        }
+
+        // Apply initial filter on page load
+        filterProducts(currentCategory);
+
+        // Handle dropdown changes
+        select.addEventListener('change', function () {
+            const selected = this.value;
+
+            // Filter products
+            filterProducts(selected);
+
+            // Update URL without reloading the page
+            const newUrl = selected === 'all'
+                ? window.location.pathname
+                : `${window.location.pathname}?category=${selected}`;
+
+            window.history.pushState({ category: selected }, '', newUrl);
+        });
+
+        // Handle browser navigation (Back / Forward)
+        window.addEventListener('popstate', function (e) {
+            const category = e.state ? e.state.category : 'all';
+            select.value = category;
+            filterProducts(category);
+        });
+    });
+</script>
+
 {% endblock %}
