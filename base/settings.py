@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     "django.contrib.sites",
     "django.contrib.sitemaps",
+    'django.contrib.humanize',
 
     # my apps
     'frontend',

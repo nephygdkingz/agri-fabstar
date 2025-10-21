@@ -159,6 +159,7 @@ def product_list(request):
 
 def product_detail(request, slug):
     product = get_object_or_404(Product.objects.select_related("category"), slug=slug, is_available=True)
+    images = product.media.all() 
 
     # Get related products from the same category (excluding current one)
     related_products = (
@@ -178,6 +179,7 @@ def product_detail(request, slug):
 
     context = {
         "product": product,
+        'images': images,
         "related_products": related_products,
         "meta_title": meta_title,
         "meta_description": meta_description,

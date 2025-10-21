@@ -1,5 +1,6 @@
 {% extends "./base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}{{ meta_title }}{% endblock %}
 {% block meta_description %}{{ meta_description }}{% endblock %}
@@ -28,18 +29,18 @@
         <div class="row align-items-center g-5 fade-up">
             <!-- Product Image Gallery -->
             <div class="col-md-6">
+                {% if product.featured_image %}
                 <div class="main-img mb-3">
                     <img id="mainProductImg"
-                        src="https://images.unsplash.com/photo-1603190287605-e6ade32fa852?q=80&w=800"
-                        class="img-fluid rounded-4 shadow-sm" alt="Yam Tubers">
+                        src="{{ product.featured_image }}"
+                        class="img-fluid rounded-4 shadow-sm" alt="{{product.name}}">
                 </div>
+                {% endif %}
                 <div class="thumbs d-flex gap-2 justify-content-center">
-                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=800"
-                        class="thumb-img active rounded-3" alt="">
-                    <img src="https://images.unsplash.com/photo-1603190287605-e6ade32fa852?q=80&w=800"
-                        class="thumb-img rounded-3" alt="">
-                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=800"
-                        class="thumb-img rounded-3" alt="">
+                    {% for img in images %}
+                    <img src="{{ img.image.url }}"
+                        class="thumb-img active rounded-3" alt="{{ img.alt_text }}">
+                    {% endfor %}
                 </div>
             </div>
 
@@ -47,7 +48,11 @@
             <div class="col-md-6">
                 <h2 class="fw-bold mb-3">{{product.name}}</h2>
                 <p class="text-muted mb-3">Freshly harvested organic yam tubers directly from our farm.</p>
-                <h4 class="text-primary fw-semibold mb-3">₦{{product.price}} <small class="text-muted fs-6">/ each</small></h4>
+                <h4 class="text-primary fw-semibold mb-3">₦{{product.price|floatformat:0|intcomma}} 
+                {% if product.is_each %}
+                    <small class="text-muted fs-6">/ each</small>
+                {% endif %}
+                </h4>
 
                 <div class="mb-3">
                     <label for="quantity" class="form-label fw-semibold">Quantity</label>
@@ -84,11 +89,12 @@
         <div class="swiper myRelatedSwiper fade-up">
             <div class="swiper-wrapper">
                 <!-- Slide 1 -->
+                {% for product in related_products %}
                 <div class="swiper-slide" style="margin-right: 10px;">
                     <div class="card product-card">
                         <div class="img-wrap">
                             <img loading="lazy"
-                                src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=500&q=60"
+                                src="{{ product.featured_image }}"
                                 alt="Seed bag product">
                         </div>
                         <div class="p-3">
@@ -99,60 +105,31 @@
                                     <!-- <small class="text-muted">{{product.short_description}}</small> -->
                                     <a href="{% url 'frontend:product_detail' product.slug %}">View Details</a>
                                 </div>
-                                <div class="text-end">
-                                    <div class="badge-discount">-20%</div>
-                                </div>
+
+                                {% if product.has_discount %}
+                                    <div class="text-end">
+                                        <div class="badge-discount">-{{product.sale_percent}}%</div>
+                                    </div>
+                                {% endif %}
                             </div>
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
-                                    <div class="fw-bold">₦{{product.price}}</div>
+                                    <div class="fw-bold">₦{{product.price|floatformat:0|intcomma}}</div>
+                                    {% if product.has_discount %}
                                     <small
-                                        class="text-muted text-decoration-line-through">₦{{product.old_price}}</small>
+                                        class="text-muted text-decoration-line-through">₦{{product.old_price|floatformat:0|intcomma}}</small>
+                                    {% endif %}
                                 </div>
                                 <div>
-                                    <button class="btn btn-sm btn-outline-secondary me-1"><i
-                                            class="bi bi-heart"></i></button>
+                                    <!-- <button class="btn btn-sm btn-outline-secondary me-1"><i
+                                            class="bi bi-heart"></i></button> -->
                                     <button class="btn btn-sm btn-primary-custom">Add to Cart</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Slide 2 -->
-                <div class="swiper-slide">
-                    <div class="card product-card">
-                        <div class="img-wrap">
-                            <img loading="lazy"
-                                src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=500&q=60"
-                                alt="Seed bag product">
-                        </div>
-                        <div class="p-3">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <div>
-                                    <h6 class="mb-1">{{product.name}}</h6>
-                                    <!-- <h6 class="mb-1"><a href="{% url 'frontend:product_detail' product.slug %}">{{product.name}}</a></h6> -->
-                                    <!-- <small class="text-muted">{{product.short_description}}</small> -->
-                                    <a href="{% url 'frontend:product_detail' product.slug %}">View Details</a>
-                                </div>
-                                <div class="text-end">
-                                    <div class="badge-discount">-20%</div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <div class="fw-bold">₦{{product.price}}</div>
-                                    <small
-                                        class="text-muted text-decoration-line-through">₦{{product.old_price}}</small>
-                                </div>
-                                <div>
-                                    <button class="btn btn-sm btn-outline-secondary me-1"><i
-                                            class="bi bi-heart"></i></button>
-                                    <button class="btn btn-sm btn-primary-custom">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="swiper-pagination mt-3"></div>
         </div>

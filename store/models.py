@@ -42,6 +42,7 @@ class Product(models.Model):
     old_price = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     is_featured = models.BooleanField(default=False)
     is_available = models.BooleanField(default=True)
+    is_each = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -63,13 +64,27 @@ class Product(models.Model):
 
     @property
     def sale_percent(self):
-        if self.old_price > self.price:
+        if self.old_price and self.old_price > self.price:
             discount = ((self.old_price - self.price) / self.old_price) * 100
             return round(discount, 1)  # Rounded to 1 decimal
         return 0
 
+    @property
+    def has_discount(self):
+        """Return True if product is discounted"""
+        return self.old_price and self.old_price > self.price
+    
     def __str__(self):
         return self.name
+    
+    @property
+    def featured_image(self):
+        """Return the featured image or first available one"""
+        featured = self.media.filter(is_featured=True).first()
+        if featured:
+            return featured.image.url
+        first = self.media.first()
+        return first.image.url if first else None
 
     def get_absolute_url(self):
         return reverse("store:product_detail", kwargs={"slug": self.slug})

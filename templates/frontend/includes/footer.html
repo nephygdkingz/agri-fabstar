@@ -18,10 +18,10 @@
             <div class="col-md-4">
                 <h6 class="fw-bold mb-3">Quick Links</h6>
                 <ul class="list-unstyled">
-                    <li><a href="#categories">Shop by Category</a></li>
-                    <li><a href="#featured-products">Featured Products</a></li>
-                    <li><a href="#why-choose-us">Why Choose Us</a></li>
-                    <li><a href="#newsletter">Subscribe</a></li>
+                    <li><a href="{% url 'frontend:product_list' %}">Shop by Category</a></li>
+                    <li><a href="{% url 'frontend:product_list' %}">Featured Products</a></li>
+                    <li><a href="{% url 'frontend:about' %}">Why Choose Us</a></li>
+                    <li><a href="{% url 'frontend:contact' %}">Contact Us</a></li>
                 </ul>
             </div>
 
