@@ -1589,23 +1589,6 @@
 
 
 /* ===== CART PAGE ===== */
-/* .cart-img {
-  width: 80px;
-  height: 70px;
-  object-fit: cover;
-}
-.qty-input {
-  width: 60px;
-  text-align: center;
-}
-.cart-item button i {
-  font-size: 1rem;
-}
-.cart-item:hover {
-  background-color: #f9f9f9;
-  transition: 0.3s;
-} */
-
 .cart-item {
   transition: 0.3s ease;
   background-color: #e0e7e3;
@@ -1643,6 +1626,42 @@
 
   .cart-item button.btn-outline-danger {
     margin-top: 0.5rem;
+  }
+}
+
+
+/* ===== CHECKOUT PAGE ===== */
+.checkout-section .card {
+  border-radius: 1rem;
+}
+
+.checkout-section input,
+.checkout-section select {
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+.btn-accent {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  transition: 0.3s ease;
+}
+
+.btn-accent:hover {
+  background-color: #2e8b57;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.7s ease-out forwards;
+}
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

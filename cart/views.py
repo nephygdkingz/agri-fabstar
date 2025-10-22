@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 
@@ -82,3 +82,25 @@ def cart_remove_ajax(request):
         'cartCount': len(cart),
         
     })
+
+
+def checkout_view(request):
+    cart = Cart(request)
+    cart_items = list(cart)  # __iter__ gives you all cart items
+    cart_total = cart.get_total_price()
+
+    context = {
+        'cart_items': cart_items,
+        'cart_total': f"{cart_total:.2f}",
+        'shipping': cart.get_shipping_cost(),
+        'final_total': cart.get_final_total(),
+        "meta_title": "Checkout - Fabstar Limited",
+        "meta_description": "Complete your purchase of agricultural products, livestock, and gas items with Fabstar Limited's secure checkout.",
+        "no_index": True,  # 👈 Prevent indexing
+    }
+
+    # if request.method == "POST":
+        # Process order submission here (save to DB, trigger payment, etc.)
+        # Example redirect to a success page
+        # return redirect("frontend:order_success")
+    return render(request, "cart/checkout.html", context)
