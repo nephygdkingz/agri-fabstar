@@ -65,6 +65,7 @@ class Cart:
             item = self.cart[product.slug].copy()  # copy dict to avoid mutation issues
             item['product_obj'] = product
             item['total_price'] = Decimal(item['price']) * item['quantity']
+            item['featured_image'] = product.featured_image
             yield item
 
     def __len__(self):

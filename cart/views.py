@@ -5,6 +5,22 @@ from django.views.decorators.http import require_POST
 from .cart import Cart
 from store.models import Product
 
+def cart_detail(request):
+    cart = Cart(request)
+    cart_items = list(cart)  # __iter__ gives you all cart items
+    cart_total = cart.get_total_price()
+    
+    return render(request, 'cart/cart_summary.html', {
+        'cart_items': cart_items,
+        'cart_total': f"{cart_total:.2f}",
+        'shipping': cart.get_shipping_cost(),
+        'final_total': cart.get_final_total(),
+        "meta_title": "Your Shopping Cart - Fabstar Limited",
+        "meta_description": "Review items in your cart and proceed to checkout. Secure and fast ordering from Fabstar Limited.",
+        "no_index": True,
+    })
+
+
 @require_POST
 def cart_add_ajax(request):
     slug = request.POST.get('slug')

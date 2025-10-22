@@ -23,6 +23,11 @@
     <meta name="twitter:description" content="{{ meta_description|default:default_meta_description }}" />
     <meta property="twitter:image" content="{{ og_image|default:default_og_image }}" />
 
+    {% if no_index %}
+      <meta name="robots" content="noindex, nofollow">
+    {% endif %}
+
+
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
     {

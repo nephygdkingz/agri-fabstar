@@ -39,7 +39,7 @@
 
             <!-- Cart & Hamburger -->
             <div class="d-flex align-items-center">
-                <a href="#" class="me-3 position-relative text-dark">
+                <a href="{% url 'cart:cart_detail' %}" class="me-3 position-relative text-dark">
                     <i class="bi bi-cart3 fs-5"></i>
                     <span class="cart-badge" id="cart-count">{{ cart_item_count }}</span>
                 </a>
