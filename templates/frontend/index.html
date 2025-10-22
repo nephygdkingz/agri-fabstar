@@ -17,7 +17,7 @@
                         <h1 class="display-5 fw-bold mb-3">Empowering Farmers, Enriching Harvests</h1>
                         <p class="lead mb-4">High-quality seeds, fertilizers, and farm equipment. Everything you
                             need to grow successfully.</p>
-                        <a href="#" class="btn btn-accent btn-lg px-4">Order Now</a>
+                        <a href="{% url 'frontend:product_list' %}" class="btn btn-accent btn-lg px-4">Order Now</a>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                     <div class="container text-center text-light">
                         <h1 class="display-5 fw-bold mb-3">Sustainable Agriculture for the Future</h1>
                         <p class="lead mb-4">We support eco-friendly and innovative farming solutions.</p>
-                        <a href="#" class="btn btn-light btn-lg px-4">Learn More</a>
+                        <a href="{% url 'frontend:about' %}" class="btn btn-light btn-lg px-4">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     <div class="container text-center text-light">
                         <h1 class="display-5 fw-bold mb-3">From Our Fields to Your Table</h1>
                         <p class="lead mb-4">Supplying trusted farm produce and equipment nationwide.</p>
-                        <a href="#" class="btn btn-accent btn-lg px-4">Explore Products</a>
+                        <a href="{% url 'frontend:product_list' %}" class="btn btn-accent btn-lg px-4">Explore Products</a>
                     </div>
                 </div>
             </div>
@@ -195,8 +195,19 @@
                     <div class="category-icon mb-3 text-accent">
                         <i class="bi bi-flower1 display-5"></i>
                     </div>
-                    <h5 class="fw-semibold mb-2">Seeds</h5>
+                    <h5 class="fw-semibold mb-2">Agriculture</h5>
                     <p class="small text-muted mb-0">High-yield crop & vegetable seeds</p>
+                </div>
+            </div>
+
+            <!-- Category 3 -->
+            <div class="col-6 col-md-3 fade-up">
+                <div class="category-card shadow-sm p-4 rounded-4 bg-white h-100">
+                    <div class="category-icon mb-3 text-accent">
+                        <i class="bi bi-tools display-5"></i>
+                    </div>
+                    <h5 class="fw-semibold mb-2">Livestock</h5>
+                    <p class="small text-muted mb-0">Farming & hand tools</p>
                 </div>
             </div>
 
@@ -211,24 +222,13 @@
                 </div>
             </div>
 
-            <!-- Category 3 -->
-            <div class="col-6 col-md-3 fade-up">
-                <div class="category-card shadow-sm p-4 rounded-4 bg-white h-100">
-                    <div class="category-icon mb-3 text-accent">
-                        <i class="bi bi-tools display-5"></i>
-                    </div>
-                    <h5 class="fw-semibold mb-2">Tools</h5>
-                    <p class="small text-muted mb-0">Farming & hand tools</p>
-                </div>
-            </div>
-
             <!-- Category 4 -->
             <div class="col-6 col-md-3 fade-up">
                 <div class="category-card shadow-sm p-4 rounded-4 bg-white h-100">
                     <div class="category-icon mb-3 text-accent">
                         <i class="bi bi-truck-front-fill display-5"></i>
                     </div>
-                    <h5 class="fw-semibold mb-2">Machinery</h5>
+                    <h5 class="fw-semibold mb-2">Gas Plant</h5>
                     <p class="small text-muted mb-0">Farm machines & irrigation</p>
                 </div>
             </div>
@@ -236,7 +236,7 @@
 
         <!-- View All Button -->
         <div class="my-5 fade-up">
-            <a href="#" class="btn btn-view-all px-4 py-2 fw-semibold">
+            <a href="{% url 'frontend:product_list' %}" class="btn btn-view-all px-4 py-2 fw-semibold">
                 <i class="bi bi-grid-3x3-gap-fill me-2"></i> View All Categories
             </a>
         </div>
@@ -387,7 +387,7 @@
                     From seeds to fertilizers — everything you need to grow more for less.
                 </p>
 
-                <a href="#" class="btn btn-light btn-lg px-4 py-2 rounded-pill shadow-sm fw-semibold">
+                <a href="{% url 'frontend:product_list' %}" class="btn btn-light btn-lg px-4 py-2 rounded-pill shadow-sm fw-semibold">
                     <i class="bi bi-basket-fill me-2"></i> Shop Now
                 </a>
 
@@ -624,7 +624,7 @@
         <p class="lead mb-4">
             From vibrant vegetables to juicy fruits — shop quality produce grown with care by local farmers.
         </p>
-        <a href="#" class="btn btn-light btn-lg px-4 rounded-pill shadow-sm fw-semibold">
+        <a href="{% url 'frontend:product_list' %}" class="btn btn-light btn-lg px-4 rounded-pill shadow-sm fw-semibold">
             <i class="bi bi-cart-fill me-2"></i> Shop Fresh Produce
         </a>
     </div>
