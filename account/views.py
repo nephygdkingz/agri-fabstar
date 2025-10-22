@@ -28,7 +28,7 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     messages.success(request, "You have been logged out successfully.")
-    return redirect("frontend:login")
+    return redirect("account:login")
 
 
 from django.contrib.auth.decorators import login_required
