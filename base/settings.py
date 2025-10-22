@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # my apps
     'frontend',
     'store',
+    'cart',
 ]
 
 SITE_ID = 1
@@ -76,6 +77,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'frontend.context_processors.default_meta',
                 # "store.context_processors.categories_processor",
+                'cart.context_processors.cart_item_count',
             ],
         },
     },
