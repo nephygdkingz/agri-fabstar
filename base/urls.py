@@ -18,6 +18,7 @@ urlpatterns = [
     path('', include('frontend.urls', namespace="frontend")),
     path('store/', include('store.urls', namespace="store")),
     path('cart/', include('cart.urls', namespace="cart")),
+    path('account/', include('account.urls', namespace="account")),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     # path('robots.txt', robots_txt),
 ]

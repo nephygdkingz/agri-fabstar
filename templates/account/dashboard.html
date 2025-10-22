@@ -1,0 +1,118 @@
+{% extends "../frontend/base.html" %}
+{% load static %}
+
+{% block title %}{{ meta_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<div class="admin-dashboard d-flex">
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="admin-sidebar p-3 mt-5">
+    <h4 class="fw-bold mb-4 text-center text-white mt-3">Admin Panel</h4>
+    <ul class="nav flex-column">
+      <li class="nav-item"><a href="{% url 'account:dashboard' %}" class="nav-link text-white active">Dashboard</a></li>
+      <li class="nav-item"><a href="#" class="nav-link text-white">Orders</a></li>
+      <li class="nav-item"><a href="#" class="nav-link text-white">Products</a></li>
+      <li class="nav-item"><a href="#" class="nav-link text-white">Customers</a></li>
+      <li class="nav-item"><a href="#" class="nav-link text-white">Settings</a></li>
+      <li class="nav-item"><a href="{% url 'account:logout' %}" class="nav-link text-white">Logout</a></li>
+    </ul>
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="admin-content flex-grow-1 p-4 fade-up mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4 mt-4">
+      <h3 class="fw-bold">Dashboard Overview</h3>
+      <a href="{% url 'account:logout' %}" class="btn btn-accent">Logout</a href="">
+    </div>
+
+    <!-- ===== ORDERS TABLE ===== -->
+    <div class="card mb-4 shadow-sm border-0 rounded-4">
+      <div class="card-header bg-light fw-bold">Recent Orders</div>
+      <div class="card-body table-responsive">
+        <table class="table table-hover align-middle">
+          <thead class="table-primary">
+            <tr>
+              <th>#</th>
+              <th>Customer</th>
+              <th>Date</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>001</td>
+              <td>John Doe</td>
+              <td>2025-10-14</td>
+              <td>$120.00</td>
+              <td><span class="badge bg-success">Delivered</span></td>
+              <td>
+                <button class="btn btn-sm btn-outline-info">View</button>
+              </td>
+            </tr>
+            <tr>
+              <td>002</td>
+              <td>Jane Smith</td>
+              <td>2025-10-13</td>
+              <td>$89.99</td>
+              <td><span class="badge bg-warning text-dark">Pending</span></td>
+              <td>
+                <button class="btn btn-sm btn-outline-info">View</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===== PRODUCT MANAGEMENT ===== -->
+    <div class="card shadow-sm border-0 rounded-4">
+      <div class="card-header bg-light d-flex justify-content-between align-items-center">
+        <span class="fw-bold">Products</span>
+        <button class="btn btn-primary-custom btn-sm">+ Add Product</button>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-hover align-middle">
+          <thead class="table-primary">
+            <tr>
+              <th>#</th>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01</td>
+              <td><img src="https://via.placeholder.com/60" alt="product" class="rounded"></td>
+              <td>Fresh Tomatoes</td>
+              <td>$12.00</td>
+              <td>120</td>
+              <td>
+                <button class="btn btn-sm btn-outline-success me-2">Edit</button>
+                <button class="btn btn-sm btn-outline-danger">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>02</td>
+              <td><img src="https://via.placeholder.com/60" alt="product" class="rounded"></td>
+              <td>Organic Bananas</td>
+              <td>$9.50</td>
+              <td>80</td>
+              <td>
+                <button class="btn btn-sm btn-outline-success me-2">Edit</button>
+                <button class="btn btn-sm btn-outline-danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

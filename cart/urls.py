@@ -11,5 +11,6 @@ urlpatterns = [
     path('remove-ajax/', views.cart_remove_ajax, name='cart_remove_ajax'),
 
     path('checkout/', views.checkout_view, name='checkout'),
+    path("order-success/", views.order_success, name="order_success"),
     # path('checkout/process/', views.process_checkout, name='process_checkout'),
 ]

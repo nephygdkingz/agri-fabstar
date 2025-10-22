@@ -47,10 +47,11 @@ INSTALLED_APPS = [
     'frontend',
     'store',
     'cart',
+    'account',
 ]
 
 SITE_ID = 1
-
+LOGIN_URL = 'account:login'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

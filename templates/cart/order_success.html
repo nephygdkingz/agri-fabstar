@@ -1,0 +1,113 @@
+{% extends "../frontend/base.html" %}
+{% load static %}
+
+{% block title %}{{ meta_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<!-- ===== ABOUT HERO SECTION ===== -->
+<section class="about-hero position-relative text-white d-flex align-items-center justify-content-center">
+    <div class="about-overlay"></div>
+
+    <div class="container text-center position-relative fade-up" style="z-index: 2;">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center mb-3">
+                <li class="breadcrumb-item"><a href="{% url 'frontend:home' %}"
+                        class="text-white text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">Order Success</li>
+            </ol>
+        </nav>
+        <h1 class="display-4 fw-bold mb-2 fade-up">Order Placed Successfully!</h1>
+        <p class="lead fade-up mb-5" style="animation-delay: 0.3s;">
+            Thank you for shopping with us. Your order is being processed and will be delivered soon.
+        </p>
+        <a href="{% url 'frontend:home' %}" class="btn btn-accent px-4 py-2 fw-semibold me-2">
+            <i class="bi bi-house-door-fill me-1"></i>Return Home
+        </a>
+        <a href="{% url 'frontend:product_list' %}" class="btn btn-outline-light px-4 py-2 fw-semibold">
+            <i class="bi bi-bag-fill me-1"></i>Continue Shopping
+        </a>
+    </div>
+
+    <!-- Floating Leaves -->
+    <div class="leaf leaf1"></div>
+    <div class="leaf leaf2"></div>
+    <div class="leaf leaf3"></div>
+</section>
+<!-- ===== END ABOUT HERO SECTION ===== -->
+
+<!-- ===== ORDER SUMMARY ===== -->
+<section class="order-summary-section py-5">
+    <div class="container">
+        <div class="card border-0 shadow-sm rounded-4 fade-up">
+            <div class="card-body p-4">
+                <h4 class="fw-bold text-primary mb-3">Order Summary</h4>
+                <p class="text-muted mb-4">Here's a summary of your order details.</p>
+
+                <!-- Order Info -->
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <h6 class="fw-semibold text-secondary mb-1">Order ID</h6>
+                        <p class="mb-0">#FBS-239847</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="fw-semibold text-secondary mb-1">Date</h6>
+                        <p class="mb-0">October 14, 2025</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="fw-semibold text-secondary mb-1">Payment Method</h6>
+                        <p class="mb-0">Cash on Delivery</p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- Products Table -->
+                <div class="table-responsive mb-4">
+                    <table class="table align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Hybrid Maize Seeds</td>
+                                <td>2</td>
+                                <td>₦2,000</td>
+                                <td>₦4,000</td>
+                            </tr>
+                            <tr>
+                                <td>Organic Fertilizer</td>
+                                <td>1</td>
+                                <td>₦18,000</td>
+                                <td>₦18,000</td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="fw-semibold">
+                            <tr>
+                                <td colspan="3" class="text-end">Shipping</td>
+                                <td>₦1,500</td>
+                            </tr>
+                            <tr class="text-primary fs-5">
+                                <td colspan="3" class="text-end">Total</td>
+                                <td>₦23,500</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <!-- Delivery Info -->
+                <div class="fade-up" style="animation-delay: 0.3s;">
+                    <h6 class="fw-bold text-primary mb-2">Delivery Address</h6>
+                    <p class="mb-0">123 Farm Lane, Ebenebe, Anambra State, Nigeria</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

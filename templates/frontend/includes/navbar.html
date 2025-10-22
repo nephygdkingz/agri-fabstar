@@ -12,32 +12,23 @@
             <!-- Main Nav (Desktop) -->
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav mb-2 mb-lg-0">
+                {% if request.user.is_authenticated %}
+                    <!-- <li class="nav-item"><a class="nav-link" href="{% url 'account:dashboard' %}">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'account:logout' %}">Logout</a></li> -->
+                {% else %}
                     <li class="nav-item"><a class="nav-link active" href="{% url 'frontend:home' %}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'frontend:services' %}">Services</a></li>
-                    <!-- <li class="nav-item"><a class="nav-link" href="#">Order</a></li> -->
-                    <!-- {% if nav_categories %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Services
-                            </a>
-                            <ul class="dropdown-menu">
-                                {% for category in nav_categories %}
-                                    <li>
-                                        <a class="dropdown-item" href="{{ category.get_absolute_url }}">{{ category.name }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                    {% endif %} -->
                     <li class="nav-item"><a class="nav-link" href="{% url 'frontend:product_list' %}">Order</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'frontend:about' %}">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'frontend:home' %}">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'frontend:contact' %}">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'account:login' %}">Sign In</a></li>
+                {% endif %}
                 </ul>
             </div>
 
             <!-- Cart & Hamburger -->
+            {% if not request.user.is_authenticated %}
             <div class="d-flex align-items-center">
                 <a href="{% url 'cart:cart_detail' %}" class="me-3 position-relative text-dark">
                     <i class="bi bi-cart3 fs-5"></i>
@@ -53,6 +44,7 @@
                 <input class="form-control" type="search" placeholder="Search products..." aria-label="Search">
                 <button class="btn btn-accent" type="submit"><i class="bi bi-search"></i></button>
             </form>
+            {% endif %}
         </div>
     </nav>
 
@@ -60,12 +52,18 @@
     <div class="sidebar" id="sidebar">
         <button class="close-btn" id="closeSidebar">&times;</button>
         <ul class="list-unstyled mt-4">
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url 'account:dashboard' %}">logout</a></li>
+            <li><a href="{% url 'account:logout' %}">logout</a></li>
+            {% else %}
             <li><a href="{% url 'frontend:home' %}">Home</a></li>
             <li><a href="{% url 'frontend:services' %}">Services</a></li>
             <li><a href="{% url 'frontend:product_list' %}">Order</a></li>
             <li><a href="{% url 'frontend:about' %}">About Us</a></li>
             <li><a href="{% url 'frontend:about' %}">Blog</a></li>
             <li><a href="{% url 'frontend:contact' %}">Contact Us</a></li>
+            <li><a href="{% url 'account:login' %}">Sign In</a></li>
+            {% endif %}
         </ul>
         <!-- <form class="mt-3 px-3">
             <input type="text" class="form-control mb-2" placeholder="Search...">

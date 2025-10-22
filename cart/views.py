@@ -104,3 +104,12 @@ def checkout_view(request):
         # Example redirect to a success page
         # return redirect("frontend:order_success")
     return render(request, "cart/checkout.html", context)
+
+
+def order_success(request):
+    context = {
+        "meta_title": "Order Successful – Fabstar Limited",
+        "meta_description": "Thank you for shopping with Fabstar Limited. Your order has been received successfully. We’ll contact you soon for delivery confirmation.",
+        "no_index": True,  # 👈 Prevents Google from indexing this page
+    }
+    return render(request, "cart/order_success.html", context)
