@@ -1,7 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+
+from store.forms import AddProductForm
+# Only allow staff or superusers
+def admin_required(user):
+    return user.is_staff or user.is_superuser
 
 def login_view(request):
     next_url = request.GET.get('next') or request.POST.get('next')
@@ -35,6 +40,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 @login_required
+@user_passes_test(admin_required)
 def dashboard_view(request):
     user = request.user
 
@@ -46,4 +52,17 @@ def dashboard_view(request):
     }
 
     return render(request, "account/dashboard.html", context)
+
+@login_required
+@user_passes_test(admin_required)
+def add_product_view(request):
+    form = AddProductForm(request.POST or None)
+
+    context = {
+        "meta_title": "Add New Product - Fabstar Limited Admin",
+        "meta_description": "Add new agricultural, livestock, or gas products to the Fabstar Limited online store.",
+        "no_index": True,
+        "form":form,
+    }
+    return render(request, "account/admin/add_product.html", context)
 

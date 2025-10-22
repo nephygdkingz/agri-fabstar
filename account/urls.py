@@ -9,4 +9,7 @@ urlpatterns = [
     path("logout/", views.logout_view, name="logout"),
     path("dashboard/", views.dashboard_view, name="dashboard"),
 
+    path("admin/add-product/", views.add_product_view, name="add_product"),
+
+
 ]
