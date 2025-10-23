@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 from store.forms import AddProductForm, MediaFormSet, EditMediaFormSet
 from store.models import Product
+from order.models import Order
+
 # Only allow staff or superusers
 def admin_required(user):
     return user.is_staff or user.is_superuser
@@ -45,11 +47,11 @@ def dashboard_view(request):
 
     # Query all products and orders
     products = Product.objects.all().order_by("-created_at")  
-    # orders = Order.objects.all().order_by("-created_at")
+    orders = Order.objects.all().order_by("-created")
 
     # --- PAGINATION ---
-    product_paginator = Paginator(products, 10)  # 10 products per page
-    # order_paginator = Paginator(orders, 10)      # 10 orders per page
+    product_paginator = Paginator(products, 2)  # 10 products per page
+    order_paginator = Paginator(orders, 2)      # 10 orders per page
 
     # Get page numbers from query params (?product_page=2&order_page=3)
     product_page_number = request.GET.get("product_page")
@@ -57,7 +59,7 @@ def dashboard_view(request):
 
     # Get the correct page objects
     product_page = product_paginator.get_page(product_page_number)
-    # order_page = order_paginator.get_page(order_page_number)
+    order_page = order_paginator.get_page(order_page_number)
 
     context = {
         "meta_title": "My Dashboard - Fabstar Limited",
@@ -65,7 +67,7 @@ def dashboard_view(request):
         "no_index": True,
         "user": user,
         "product_page": product_page,
-        # "order_page": order_page,
+        "order_page": order_page,
     }
 
     return render(request, "account/dashboard.html", context)

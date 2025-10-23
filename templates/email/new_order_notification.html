@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>New Order Notification - Fabstar Limited</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f7f7f7; padding: 20px; color: #333; }
+    .container { max-width: 600px; margin: auto; background: #fff; padding: 25px; border-radius: 8px; }
+    .header { border-bottom: 2px solid #198754; padding-bottom: 10px; margin-bottom: 20px; }
+    .footer { margin-top: 30px; font-size: 13px; color: #777; text-align: center; }
+    .order-details { margin-top: 20px; border-collapse: collapse; width: 100%; }
+    .order-details th, .order-details td { border: 1px solid #ddd; padding: 8px; font-size: 14px; }
+    .order-details th { background-color: #198754; color: white; text-align: left; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>🛒 New Order Received</h2>
+    </div>
+
+    <p>Hello Fabstar Team,</p>
+
+    <p>A new order has been placed on the website. Below are the order details:</p>
+
+    <h3>Customer Information</h3>
+    <p>
+      <strong>Name:</strong> {{ order.full_name }}<br>
+      <strong>Email:</strong> {{ order.email }}<br>
+      <strong>Phone:</strong> {{ order.phone }}<br>
+      <strong>Address:</strong> {{ order.address }}, {{ order.city }}, {{ order.country }}
+    </p>
+
+    <h3>Order Summary</h3>
+    <table class="order-details">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Qty</th>
+          <th>Price (₦)</th>
+          <th>Subtotal (₦)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in order.items.all %}
+        <tr>
+          <td>{{ item.product.name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.price|floatformat:2 }}</td>
+          <td>{{ item.get_subtotal|floatformat:2 }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <p><strong>Total:</strong> ₦{{ order.total|floatformat:2 }}<br></p>
+    <!-- <p><strong>Total:</strong> ₦{{ order.total|floatformat:2 }}<br>
+       <strong>Shipping:</strong> ₦{{ order.shipping_price|floatformat:2 }}<br>
+       <strong>Grand Total:</strong> ₦{{ order.get_grand_total|floatformat:2 }}</p> -->
+
+    <p>Order ID: <strong>#{{ order.order_key }}</strong><br>
+       Date: {{ order.created|date:"F j, Y, g:i a" }}</p>
+
+    <div class="footer">
+      <p>Fabstar Limited — Internal Order Notification</p>
+      <p>© {{ current_year }} Fabstar Limited</p>
+    </div>
+  </div>
+</body>
+</html>

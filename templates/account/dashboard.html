@@ -24,28 +24,37 @@
                 </tr>
             </thead>
             <tbody>
+                {% for order in order_page%}
                 <tr>
-                    <td>001</td>
-                    <td>John Doe</td>
-                    <td>2025-10-14</td>
-                    <td>$120.00</td>
-                    <td><span class="badge bg-success">Delivered</span></td>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{order.full_name}}</td>
+                    <td>{{order.created}}</td>
+                    <td>{{order.total}}</td>
+                    <td>
+                        {% if order.status == 'Pending, awaiting payment' %}
+                        <span class="badge bg-warning">Pending</span>
+                        {% elif order.status == 'Delivery in Progress' %}
+                        <span class="badge bg-info">In Progress</span>
+                        {% else%}
+                        <span class="badge bg-success">Delivered</span>
+                        {% endif %}
+                    </td>
                     <td>
                         <button class="btn btn-sm btn-outline-info">View</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>002</td>
-                    <td>Jane Smith</td>
-                    <td>2025-10-13</td>
-                    <td>$89.99</td>
-                    <td><span class="badge bg-warning text-dark">Pending</span></td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-info">View</button>
-                    </td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
+        <div class="pagination">
+            {% if order_page.has_previous %}
+            <a href="?order_page={{ order_page.previous_page_number }}">Previous</a>
+            {% endif %}
+            <span class="mx-3">Page {{ order_page.number }} of {{ order_page.paginator.num_pages }}</span>
+            {% if order_page.has_next %}
+            <a href="?order_page={{ order_page.next_page_number }}">Next</a>
+            {% endif %}
+        </div>
     </div>
 </div>
 

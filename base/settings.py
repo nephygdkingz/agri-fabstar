@@ -188,8 +188,15 @@ MESSAGE_TAGS = {
 }
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
+
+# Zoho Mail SMTP configuration
+EMAIL_HOST = "smtp.zoho.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "your_email@gmail.com"
-EMAIL_HOST_PASSWORD = "your_app_password"
+
+# Your Zoho Mail credentials
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
+# Default sender information
+DEFAULT_FROM_EMAIL = "Fabstar Limited <noreply@fabstarlimited.com>"

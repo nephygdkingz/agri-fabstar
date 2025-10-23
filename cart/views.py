@@ -6,6 +6,7 @@ from .cart import Cart
 from .forms import CheckoutForm
 from store.models import Product
 from order.models import Order, OrderItem
+from .email_utils import send_order_confirmation_email, send_internal_order_notification
 
 def cart_detail(request):
     cart = Cart(request)
@@ -116,6 +117,12 @@ def checkout_view(request):
                     price=item['price'],
                     quantity=item['quantity'],
                 )
+            
+            # Send customer confirmation email
+            send_order_confirmation_email(order)
+
+            # Send internal Fabstar notification
+            send_internal_order_notification(order)
 
             # Optional: clear cart
             cart.clear()

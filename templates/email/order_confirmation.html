@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Order Confirmation - Fabstar Limited</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f7f7f7; padding: 20px; color: #333; }
+    .container { max-width: 600px; margin: auto; background: #fff; padding: 25px; border-radius: 8px; }
+    .header { border-bottom: 2px solid #198754; padding-bottom: 10px; margin-bottom: 20px; }
+    .footer { margin-top: 30px; font-size: 13px; color: #777; text-align: center; }
+    .button {
+      display: inline-block; padding: 10px 20px; background: #198754; color: #fff;
+      text-decoration: none; border-radius: 5px; margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>Thank You for Your Order!</h2>
+    </div>
+
+    <p>Dear {{ customer_name }},</p>
+
+    <p>
+      Thank you for choosing <strong>Fabstar Limited</strong>. Your order has been placed successfully, and our sales team will reach out to you shortly via email or phone to confirm your purchase and arrange delivery.
+    </p>
+
+    <h3>Order Summary</h3>
+    <p>
+      <strong>Order ID:</strong> {{ order_id }}<br>
+      <strong>Total Amount:</strong> ₦{{ order_total }}<br>
+      <strong>Date:</strong> {{ order_date }}
+    </p>
+
+    <p>If you have any questions, simply reply to this email or contact us at 
+      <a href="mailto:contact@fabstarlimited.com">contact@fabstarlimited.com</a>.
+    </p>
+
+    <a href="https://www.fabstarlimited.com" class="button" style="color: #fff;">Visit Our Store</a>
+
+    <div class="footer">
+      <p>Fabstar Limited<br>
+      Obuno Village, Ebenebe, Awka North L.G.A, Anambra State.<br>
+      © {{ current_year }} Fabstar Limited. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
+
