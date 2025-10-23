@@ -69,14 +69,13 @@
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease-out;
+  /* animation: fadeUp 0.7s ease-out forwards; */
 }
 
 .fade-up.show {
   opacity: 1;
   transform: translateY(0);
 }
-
-
 
 /* ===== Logo Styling ===== */
 .logo-img {
@@ -1658,19 +1657,6 @@
   border: 1px solid #ccc;
 }
 
-.fade-up {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.7s ease-out forwards;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 
 /* ===== ORDER SUCCESS PAGE ===== */
 .order-success-hero {
@@ -1697,20 +1683,6 @@
 .order-summary-section .card {
   border-radius: 1rem;
 }
-
-.fade-up {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.7s ease-out forwards;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 
 /* ===== LOGIN PAGE ===== */
 .login-hero {
@@ -1743,19 +1715,6 @@
 .login-section .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.fade-up {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.7s ease-out forwards;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* ===== ADMIN DASHBOARD ===== */
