@@ -53,7 +53,7 @@
         <button class="close-btn" id="closeSidebar">&times;</button>
         <ul class="list-unstyled mt-4">
             {% if request.user.is_authenticated %}
-            <li><a href="{% url 'account:dashboard' %}">logout</a></li>
+            <li><a href="{% url 'account:dashboard' %}">Dashboard</a></li>
             <li><a href="{% url 'account:logout' %}">logout</a></li>
             {% else %}
             <li><a href="{% url 'frontend:home' %}">Home</a></li>

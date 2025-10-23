@@ -56,6 +56,13 @@
 .text-primary {
   color: #004851 !important;
 }
+.bg-primary{
+  background: var(--color-primary) !important;
+}
+
+.bg-info{
+  background: var(--color-accent) !important;
+}
 
 /* ===== Scroll Animations ===== */
 .fade-up {

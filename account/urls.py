@@ -10,6 +10,5 @@ urlpatterns = [
     path("dashboard/", views.dashboard_view, name="dashboard"),
 
     path("admin/add-product/", views.add_product_view, name="add_product"),
-
-
+    path("admin/edit-product/<pk>/", views.edit_product_view, name="edit_product"),
 ]

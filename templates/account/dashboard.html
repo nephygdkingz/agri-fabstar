@@ -1,5 +1,6 @@
 {% extends "./admin_base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block admin_dashboard %}
 <div class="d-flex justify-content-between align-items-center mb-4 mt-4">
@@ -62,35 +63,43 @@
                     <th>Image</th>
                     <th>Name</th>
                     <th>Price</th>
-                    <th>Stock</th>
+                    <th>In Stock</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
+                {% for product in product_page %}
                 <tr>
-                    <td>01</td>
-                    <td><img src="https://via.placeholder.com/60" alt="product" class="rounded"></td>
-                    <td>Fresh Tomatoes</td>
-                    <td>$12.00</td>
-                    <td>120</td>
+                    <td>{{forloop.counter}}</td>
+                    <td><img src="{{product.featured_image}}" alt="product" class="rounded" style="width: 60px;"></td>
+                    <td>{{product.name}}</td>
+                    <td>₦{{product.old_price|floatformat:0|intcomma}}</td>
                     <td>
-                        <button class="btn btn-sm btn-outline-success me-2">Edit</button>
-                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        {% if product.is_available %}
+                        In Stock
+                        {% else%}
+                        Out Of Stock
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'account:edit_product' product.pk %}" class="btn btn-sm btn-outline-success me-2">Edit</a>
+                        <a class="btn btn-sm btn-outline-danger">Delete</a>
                     </td>
                 </tr>
-                <tr>
-                    <td>02</td>
-                    <td><img src="https://via.placeholder.com/60" alt="product" class="rounded"></td>
-                    <td>Organic Bananas</td>
-                    <td>$9.50</td>
-                    <td>80</td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-success me-2">Edit</button>
-                        <button class="btn btn-sm btn-outline-danger">Delete</button>
-                    </td>
-                </tr>
+                {% empty %}
+                <p>No products available.</p>
+                {% endfor %}
             </tbody>
         </table>
+        <div class="pagination">
+            {% if product_page.has_previous %}
+            <a href="?product_page={{ product_page.previous_page_number }}">Previous</a>
+            {% endif %}
+            <span class="mx-3">Page {{ product_page.number }} of {{ product_page.paginator.num_pages }}</span>
+            {% if product_page.has_next %}
+            <a href="?product_page={{ product_page.next_page_number }}">Next</a>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}
