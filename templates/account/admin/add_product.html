@@ -191,27 +191,67 @@
         const addMoreBtn = document.getElementById('add-more');
         const formSetDiv = document.getElementById('form-set');
 
-        // Grab total form count input (hidden input that tracks how many forms exist)
+        // Django management form hidden counter
         const totalForms = document.getElementById('id_' + '{{ media_form.prefix }}' + '-TOTAL_FORMS');
 
+        // Optional: limit number of added forms
+        const maxForms = 4;
+
         addMoreBtn.addEventListener('click', function () {
-            // Get current number of forms
-            const formCount = parseInt(totalForms.value);
+            let formCount = parseInt(totalForms.value);
 
-            // Get one empty form template (the last empty formset row)
-            const emptyFormHtml = formSetDiv
-                .querySelector('.row:last-of-type')
-                .outerHTML
-                .replaceAll('-' + (formCount - 1) + '-', '-' + formCount + '-')
-                .replaceAll('id="' + '{{ media_form.prefix }}' + '-' + (formCount - 1),
-                    'id="' + '{{ media_form.prefix }}' + '-' + formCount);
+            // ✅ Limit total forms
+            if (formCount >= maxForms) {
+                alert('You can only add up to ' + maxForms + ' images.');
+                return;
+            }
 
-            // Insert new form into the DOM
-            formSetDiv.insertAdjacentHTML('beforeend', emptyFormHtml);
+            // ✅ Clone the last form row cleanly
+            const lastForm = formSetDiv.querySelector('.row:last-of-type');
+            const newForm = lastForm.cloneNode(true);
 
-            // Update total form count
+            // ✅ Remove any existing remove buttons *inside* the cloned block
+            const oldRemoveBtns = newForm.querySelectorAll('.remove-form');
+            oldRemoveBtns.forEach(btn => btn.remove());
+
+            // ✅ Replace index numbers in cloned form fields
+            const regex = new RegExp('-' + (formCount - 1) + '-', 'g');
+            newForm.innerHTML = newForm.innerHTML
+                .replace(regex, '-' + formCount + '-')
+                .replaceAll('value="on"', ''); // reset checkboxes
+
+            // ✅ Clear input values in the cloned form
+            const inputs = newForm.querySelectorAll('input');
+            inputs.forEach(input => {
+                if (['file', 'text', 'hidden'].includes(input.type)) input.value = '';
+                if (input.type === 'checkbox') input.checked = false;
+            });
+
+            // ✅ Remove any existing image preview
+            const imgPreview = newForm.querySelector('img');
+            if (imgPreview) imgPreview.remove();
+
+            // ✅ Create a single Remove button
+            const removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.textContent = 'Remove';
+            removeBtn.className = 'btn btn-sm btn-outline-danger mt-2 remove-form';
+            removeBtn.addEventListener('click', () => {
+                newForm.remove();
+                totalForms.value = parseInt(totalForms.value) - 1;
+            });
+
+            // ✅ Append the new remove button
+            newForm.appendChild(removeBtn);
+
+            // ✅ Insert new form and update management form count
+            formSetDiv.appendChild(newForm);
             totalForms.value = formCount + 1;
+
+            // ✅ Smooth scroll to the new form
+            newForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
     });
 </script>
+
 {% endblock %}
