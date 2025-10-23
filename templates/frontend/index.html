@@ -12,36 +12,36 @@
             <!-- Slide 1 -->
             <div class="carousel-item active"
                 style="background-image: url('/static/frontend/images/heroes/hero-5.jpg');">
-                <div class="carousel-overlay d-flex align-items-center">
+                <!-- <div class="carousel-overlay d-flex align-items-center">
                     <div class="container text-center text-light">
                         <h1 class="display-5 fw-bold mb-3">Empowering Farmers, Enriching Harvests</h1>
                         <p class="lead mb-4">High quality seeds, fertilizers, and farm equipment. Everything you
                             need to grow successfully.</p>
                         <a href="{% url 'frontend:product_list' %}" class="btn btn-accent btn-lg px-4">Order Now</a>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <!-- Slide 2 -->
             <div class="carousel-item" style="background-image: url('/static/frontend/images/heroes/hero-3.jpg');">
-                <div class="carousel-overlay d-flex align-items-center">
+                <!-- <div class="carousel-overlay d-flex align-items-center">
                     <div class="container text-center text-light">
                         <h1 class="display-5 fw-bold mb-3">Sustainable Agriculture for the Future</h1>
                         <p class="lead mb-4">We support eco-friendly and innovative farming solutions.</p>
                         <a href="{% url 'frontend:about' %}" class="btn btn-light btn-lg px-4">Learn More</a>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <!-- Slide 3 -->
             <div class="carousel-item" style="background-image: url('/static/frontend/images/heroes/hero-4.jpg');">
-                <div class="carousel-overlay d-flex align-items-center">
+                <!-- <div class="carousel-overlay d-flex align-items-center">
                     <div class="container text-center text-light">
                         <h1 class="display-5 fw-bold mb-3">From Our Fields to Your Table</h1>
                         <p class="lead mb-4">Supplying trusted farm produce and equipment nationwide.</p>
                         <a href="{% url 'frontend:product_list' %}" class="btn btn-accent btn-lg px-4">Explore Products</a>
                     </div>
-                </div>
+                </div> -->
             </div>
 
         </div>
@@ -246,18 +246,18 @@
 
 
 <!-- ===== INDUSTRIAL SECTION SECTION ===== -->
-<section id="industries-highlight" class="position-relative overflow-hidden py-5">
-  <div class="container-fluid px-0">
+<section id="industries-highlight" class="position-relative overflow-hidden">
+  <div class="container-fluid p-0">
     <div class="row g-0 align-items-stretch">
       <!-- Left Side: Diagonal Images -->
-      <div class="col-lg-7 col-md-12 d-flex flex-column flex-lg-row images-side">
+      <div class="col-lg-7 d-flex flex-wrap position-relative images-side">
         <div class="industry-img agriculture"></div>
         <div class="industry-img energy"></div>
         <div class="industry-img logistics"></div>
       </div>
 
       <!-- Right Side: Text Content -->
-      <div class="col-lg-5 col-md-12 text-side d-flex align-items-center justify-content-center p-5">
+      <div class="col-lg-5 d-flex align-items-center justify-content-center text-side p-5">
         <div class="text-content fade-up text-center text-lg-start">
           <h2 class="fw-bold mb-3">
             Leading a Bold Movement in 
@@ -266,11 +266,11 @@
             <span class="text-success">Logistics</span>
           </h2>
           <p class="text-muted mb-4">
-            Empowering growth and sustainability through innovation and community-driven solutions.
+            Driving growth and efficiency across agriculture, energy, and logistics for a stronger, sustainable future.
           </p>
           <div class="contact-info">
-            <p class="mb-1"><i class="bi bi-telephone-fill me-2 text-success"></i> +18172000335</p>
-            <p class="mb-1"><i class="bi bi-whatsapp me-2 text-success"></i> +16823901721, +2349036240093</p>
+            <p class="mb-1"><i class="bi bi-telephone-fill me-2 text-success"></i> +234 903 624 1093, +1 817 320 0335</p>
+            <p class="mb-1"><i class="bi bi-whatsapp me-2 text-success"></i> +1 817 320 0335</p>
           </div>
         </div>
       </div>
@@ -284,7 +284,6 @@
     </path>
   </svg>
 </section>
-
 <!-- ===== END INDUSTRIAL SECTION SECTION ===== -->
 
 <!-- ===== FEATURED PRODUCTS SECTION ===== -->
@@ -351,6 +350,73 @@
     </div>
 </section> -->
 <!-- ===== PROMOTIONAL BANNER ================ -->
+
+<!-- ===== OUR FCOCUS AREA ===== -->
+<section class="focus-areas py-5 position-relative">
+  <div class="container">
+
+    <!-- Livestock -->
+    <div class="row align-items-center mb-5 fade-up">
+      <div class="col-md-6">
+        <img src="{% static 'frontend/images/stock/poultry-small.jpg' %}" 
+             alt="Livestock farming" class="img-fluid rounded shadow-lg">
+      </div>
+      <div class="col-md-6 ps-lg-5 mt-4 mt-md-0">
+        <h2 class="fw-bold text-primary mb-3">Livestock Production</h2>
+        <p class="lead">We manage and breed healthy livestock using sustainable agricultural methods that promote food security and empower local farmers.</p>
+        <p>Our farms focus on ethical animal rearing and optimized feeding systems — ensuring productivity while maintaining the natural balance of our environment.</p>
+      </div>
+    </div>
+
+    <!-- Rice Processing -->
+    <div class="row align-items-center mb-5 flex-md-row-reverse fade-up">
+      <div class="col-md-6">
+        <img src="{% static 'frontend/images/stock/just-rice.jpg' %}" 
+             alt="Rice processing" class="img-fluid rounded shadow-lg">
+      </div>
+      <div class="col-md-6 pe-lg-5 mt-4 mt-md-0">
+        <h2 class="fw-bold text-primary mb-3">Rice Processing</h2>
+        <p class="lead">Our rice mills are at the center of agricultural transformation — turning harvested paddy into premium-grade rice for national and global markets.</p>
+        <p>We combine modern technology and farmer partnerships to ensure consistent quality and improved yields from field to final packaging.</p>
+      </div>
+    </div>
+
+    <!-- Logistics -->
+    <div class="row align-items-center mb-5 fade-up">
+      <div class="col-md-6">
+        <img src="{% static 'frontend/images/stock/delivery-1.jpg' %}" 
+             alt="Logistics and transport" class="img-fluid rounded shadow-lg">
+      </div>
+      <div class="col-md-6 ps-lg-5 mt-4 mt-md-0">
+        <h2 class="fw-bold text-primary mb-3">Logistics & Distribution</h2>
+        <p class="lead">We deliver efficiency through a strong logistics network connecting rural producers to local and international markets.</p>
+        <p>Our fleet and partnerships ensure timely delivery and transparency across the entire supply chain.</p>
+      </div>
+    </div>
+
+    <!-- Oil & Gas -->
+    <div class="row align-items-center flex-md-row-reverse fade-up">
+      <div class="col-md-6">
+        <img src="{% static 'frontend/images/stock/refinary.jpg' %}" 
+             alt="Oil and Gas plant" class="img-fluid rounded shadow-lg">
+      </div>
+      <div class="col-md-6 pe-lg-5 mt-4 mt-md-0">
+        <h2 class="fw-bold text-success mb-3">Oil & Gas</h2>
+        <p class="lead">Beyond agriculture, we contribute to the nation's energy stability through safe and sustainable oil and gas operations.</p>
+        <p>From gas plant management to petroleum distribution, we maintain a focus on safety, innovation, and environmental responsibility.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative Wave -->
+  <svg class="wave-separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 160">
+    <path fill="#004851" fill-opacity="1" 
+          d="M0,64L80,69.3C160,75,320,85,480,101.3C640,117,800,139,960,133.3C1120,128,1280,96,1360,80L1440,64L1440,160L1360,160C1280,160,1120,160,960,160C800,160,640,160,480,160C320,160,160,160,80,160L0,160Z">
+    </path>
+  </svg>
+</section>
+
+<!-- ===== OUR FCOCUS AREA ===== -->
 
 <!-- ===== WHY CHOOSE US SECTION ===== -->
 <section id="why-choose-us" class="py-5 enhanced-why-choose">
@@ -545,7 +611,7 @@
             <!-- Blog Post 1 -->
             <div class="col-10 col-md-4">
                 <div class="card border-0 shadow-sm rounded-4 h-100 blog-card">
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80"
+                    <img src="{% static './frontend/images/stock/crop-yield.jpg' %}"
                         class="card-img-top rounded-top-4" alt="Crop rotation">
                     <div class="card-body text-start">
                         <h6 class="fw-bold text-dark">Smart Crop Rotation for Better Yields</h6>
@@ -559,7 +625,7 @@
             <!-- Blog Post 2 -->
             <div class="col-10 col-md-4">
                 <div class="card border-0 shadow-sm rounded-4 h-100 blog-card">
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80"
+                    <img src="{% static './frontend/images/stock/fertilizer.webp' %}"
                         class="card-img-top rounded-top-4" alt="Organic fertilizer">
                     <div class="card-body text-start">
                         <h6 class="fw-bold text-dark">Choosing the Right Organic Fertilizer</h6>
@@ -573,11 +639,11 @@
             <!-- Blog Post 3 -->
             <div class="col-10 col-md-4">
                 <div class="card border-0 shadow-sm rounded-4 h-100 blog-card">
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80"
+                    <img src="{% static './frontend/images/stock/rice-p.jfif' %}"
                         class="card-img-top rounded-top-4" alt="Farm technology">
                     <div class="card-body text-start">
-                        <h6 class="fw-bold text-dark">Technology Transforming Small Farms</h6>
-                        <p class="small text-muted mb-3">Discover how innovation helps farmers grow smarter and faster.
+                        <h6 class="fw-bold text-dark">Rice Farming in Nigeria, harvesting ......</h6>
+                        <p class="small text-muted mb-3">Rice farming in Nigeria boosts food security with modern techniques for higher yields.
                         </p>
                         <a href="#" class="text-accent text-decoration-none fw-semibold">Read More →</a>
                     </div>

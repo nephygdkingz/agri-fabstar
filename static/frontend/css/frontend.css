@@ -1097,6 +1097,15 @@
   color: var(--color-primary);
 }
 
+.blog-card img {
+    width: 100%;          /* full width of the card */
+    height: 200px;        /* fixed height for all images */
+    object-fit: cover;    /* crop/scale image to fill area without distortion */
+    border-top-left-radius: 0.5rem;  /* match rounded-top-4 */
+    border-top-right-radius: 0.5rem;
+}
+
+
 /* ===== END BLOG STYLES ===== */
 
 /* ===== NEWSLETTER SECTION ===== */
@@ -1806,11 +1815,11 @@
   overflow: hidden;
 }
 
-.images-side {
+/* .images-side {
   display: flex;
   flex: 1;
   height: 100%;
-}
+} */
 
 .industry-img {
   flex: 1;
@@ -1826,17 +1835,17 @@
 
 /* Specific images */
 .industry-img.agriculture {
-  background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=60');
+  background-image: url('/static/frontend/images/stock/filling-station.jpg');
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
 }
 
 .industry-img.energy {
-  background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=60');
+  background-image: url('/static/frontend/images/stock/rice-1.jpg');
   clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%);
 }
 
 .industry-img.logistics {
-  background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=600&q=60');
+  background-image: url('/static/frontend/images/stock/big-truck.jpg');
   clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
 }
 
@@ -1864,13 +1873,46 @@
 }
 
 /* Responsive fixes */
-@media (max-width: 992px) {
+/* @media (max-width: 992px) {
   .images-side {
     flex-direction: column;
   }
   .industry-img {
     clip-path: none;
     min-height: 250px;
+  }
+} */
+
+/* ===== FOCUS AREA ====  */
+.focus-areas {
+  background: linear-gradient(180deg, #f8fff9 0%, #ffffff 100%);
+  position: relative;
+}
+
+.focus-areas img {
+  height: 350px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+
+.focus-areas img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.wave-separator {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .focus-areas img {
+    height: 250px;
   }
 }
 
