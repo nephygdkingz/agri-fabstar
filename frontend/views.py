@@ -7,6 +7,7 @@ from django.db.models import Q
 
 from .decorators import redirect_authenticated
 from store.models import Product, Category
+from cart.email_utils import send_contact_form_notification
 
 @redirect_authenticated('account:dashboard')
 def home_view(request):
@@ -63,22 +64,16 @@ def contact_view(request):
     if request.method == "POST":
         name = request.POST.get("name")
         email = request.POST.get("email")
+        subject = request.POST.get("subject")
         message = request.POST.get("message")
-
-        # Construct email message
-        email_subject = f"New Contact Message from {name}"
-        email_body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+        phone = request.POST.get("phone")
 
         try:
-            email_message = EmailMessage(
-                subject=email_subject,
-                body=email_body,
-                from_email=email,
-                to=["info@fabstarlimited.com"],  # Change to your real contact email
-                reply_to=[email],
-            )
-            email_message.send(fail_silently=False)
-            messages.success(request, "Thank you for contacting us! We'll get back to you soon.")
+            # Send internal notification to Fabstar
+            send_contact_form_notification(name, email, subject, message, phone)
+
+            messages.success(request, "Your message has been sent successfully. Our team will get back to you soon.")
+            
             return redirect("frontend:contact")
         except Exception as e:
             messages.error(request, "An error occurred while sending your message. Please try again.")

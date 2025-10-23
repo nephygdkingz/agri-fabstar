@@ -50,8 +50,8 @@ def dashboard_view(request):
     orders = Order.objects.all().order_by("-created")
 
     # --- PAGINATION ---
-    product_paginator = Paginator(products, 2)  # 10 products per page
-    order_paginator = Paginator(orders, 2)      # 10 orders per page
+    product_paginator = Paginator(products, 10)  # 10 products per page
+    order_paginator = Paginator(orders, 10)      # 10 orders per page
 
     # Get page numbers from query params (?product_page=2&order_page=3)
     product_page_number = request.GET.get("product_page")

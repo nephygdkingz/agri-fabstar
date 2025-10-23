@@ -7,7 +7,7 @@
     <h3 class="fw-bold">Dashboard Overview</h3>
     <a href="{% url 'account:logout' %}" class="btn btn-accent">Logout</a href="">
 </div>
-
+{% include 'alert/messages.html' %}
 <!-- ===== ORDERS TABLE ===== -->
 <div class="card mb-4 shadow-sm border-0 rounded-4">
     <div class="card-header bg-light fw-bold">Recent Orders</div>
@@ -29,7 +29,7 @@
                     <td>{{forloop.counter}}</td>
                     <td>{{order.full_name}}</td>
                     <td>{{order.created}}</td>
-                    <td>{{order.total}}</td>
+                    <td>{{order.total|floatformat:0|intcomma}}</td>
                     <td>
                         {% if order.status == 'Pending, awaiting payment' %}
                         <span class="badge bg-warning">Pending</span>

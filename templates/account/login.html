@@ -37,7 +37,7 @@
         <div class="card border-0 shadow-lg rounded-4 p-4">
           <div class="card-body">
             <h3 class="fw-bold text-center text-primary mb-4">Sign In</h3>
-
+            {% include 'alert/messages.html' %}
             <form action="." method="Post">
                 {% csrf_token %}
               <div class="mb-3">
@@ -58,7 +58,13 @@
                 <a href="#" class="text-decoration-none text-primary small fw-semibold">Forgot Password?</a>
               </div>
 
-              <button type="submit" class="btn btn-accent w-100 py-2 fw-semibold mb-3">Login</button>
+              <!-- <button type="submit" class="btn btn-accent w-100 py-2 fw-semibold mb-3">Login</button> -->
+
+              <button type="submit" class="btn btn-accent w-100 py-2 fw-semibold mb-3  js-submit-btn">
+                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                <span class="btn-text">Login</span>
+              </button>
+
 
               <!-- <p class="text-center text-muted mb-0">
                 Don't have an account?

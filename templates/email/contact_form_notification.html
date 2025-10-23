@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>New Contact Form Submission - Fabstar Limited</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f7f7f7; padding: 20px; color: #333; }
+    .container { max-width: 600px; margin: auto; background: #fff; padding: 25px; border-radius: 8px; }
+    .header { border-bottom: 2px solid #198754; padding-bottom: 10px; margin-bottom: 20px; }
+    .footer { margin-top: 30px; font-size: 13px; color: #777; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>📩 New Contact Form Submission</h2>
+    </div>
+
+    <p>Hello Fabstar Team,</p>
+
+    <p>A new inquiry has been received through the website contact form. The details are below:</p>
+
+    <p>
+      <strong>Name:</strong> {{ name }}<br>
+      <strong>Email:</strong> {{ email }}<br>
+      {% if phone %}<strong>Phone:</strong> {{ phone }}<br>{% endif %}
+      <strong>Subject:</strong> {{ subject }}
+    </p>
+
+    <h3>Message</h3>
+    <p style="white-space: pre-line;">{{ message }}</p>
+
+    <div class="footer">
+      <p>Fabstar Limited — Contact Form Notification</p>
+      <p>© {{ current_year }} Fabstar Limited</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -37,7 +37,7 @@ def send_internal_order_notification(order):
     """
     subject = f"🛒 New Order Received - #{order.order_key}"
     from_email = "Fabstar Limited <noreply@fabstarlimited.com>"
-    to_email = ["natashafranklyn123@gmail.com"]  
+    to_email = ["contact@fabstarlimited.com"]  
 
     context = {
         "order": order,
@@ -50,3 +50,29 @@ def send_internal_order_notification(order):
     email = EmailMultiAlternatives(subject, text_content, from_email, to_email)
     email.attach_alternative(html_content, "text/html")
     email.send()
+
+
+def send_contact_form_notification(name, email, subject, message, phone=None):
+    """
+    Sends an internal notification email to Fabstar Limited
+    when a visitor submits the contact form.
+    """
+    mail_subject = f"📩 New Contact Form Submission - {subject}"
+    from_email = "Fabstar Website <noreply@fabstarlimited.com>"
+    to_email = ["contact@fabstarlimited.com"]  # 👈 Internal recipient(s)
+
+    context = {
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "subject": subject,
+        "message": message,
+        "current_year": timezone.now().year,
+    }
+
+    html_content = render_to_string("email/contact_form_notification.html", context)
+    text_content = strip_tags(html_content)
+
+    email_msg = EmailMultiAlternatives(mail_subject, text_content, from_email, to_email)
+    email_msg.attach_alternative(html_content, "text/html")
+    email_msg.send()

@@ -200,3 +200,13 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 # Default sender information
 DEFAULT_FROM_EMAIL = "Fabstar Limited <noreply@fabstarlimited.com>"
+
+
+# Optional: map Django message levels to Bootstrap classes
+MESSAGE_TAGS = {
+    messages.DEBUG: "secondary",
+    messages.INFO: "info",
+    messages.SUCCESS: "success",
+    messages.WARNING: "warning",
+    messages.ERROR: "danger",
+}

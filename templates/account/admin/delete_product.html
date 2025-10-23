@@ -15,7 +15,11 @@
                             <form method="POST">
                                 {% csrf_token %}
                                 <a href="{% url 'account:dashboard' %}" class="btn btn-secondary">Cancel</a>
-                                <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                                <button type="submit" class="btn btn-danger js-submit-btn">
+                                    <span class="spinner-border spinner-border-sm d-none" role="status"
+                                        aria-hidden="true"></span>
+                                    <span class="btn-text">Yes, Delete</span> 
+                                </button>
                             </form>
                         </div>
                     </div>
