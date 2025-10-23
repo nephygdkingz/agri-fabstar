@@ -73,7 +73,7 @@
                     <td>{{forloop.counter}}</td>
                     <td><img src="{{product.featured_image}}" alt="product" class="rounded" style="width: 60px;"></td>
                     <td>{{product.name}}</td>
-                    <td>₦{{product.old_price|floatformat:0|intcomma}}</td>
+                    <td>₦{{product.price|floatformat:0|intcomma}}</td>
                     <td>
                         {% if product.is_available %}
                         In Stock
@@ -83,7 +83,7 @@
                     </td>
                     <td>
                         <a href="{% url 'account:edit_product' product.pk %}" class="btn btn-sm btn-outline-success me-2">Edit</a>
-                        <a class="btn btn-sm btn-outline-danger">Delete</a>
+                        <a href="{% url 'account:delete_product' product.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
                     </td>
                 </tr>
                 {% empty %}

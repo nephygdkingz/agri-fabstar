@@ -134,4 +134,25 @@ def edit_product_view(request, pk):
     return render(request, "account/admin/add_product.html", context)
 
 
+@login_required
+@user_passes_test(admin_required)
+def delete_product_view(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+
+    if request.method == "POST":
+        # Delete related ProductMedia first (if not set to cascade)
+        product.media.all().delete()
+        product.delete()
+        messages.success(request, f"Product '{product.name}' deleted successfully.")
+        return redirect("account:dashboard")
+
+    context = {
+        "meta_title": f"Delete Product - {product.name} | Fabstar Limited Admin",
+        "meta_description": "Confirm deletion of a product from the Fabstar Limited online store.",
+        "no_index": True,
+        "product": product,
+        "title": "Delete",
+    }
+    return render(request, "account/admin/delete_product.html", context)
+
 
