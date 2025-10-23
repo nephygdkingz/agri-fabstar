@@ -1,12 +1,14 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
+from django.contrib import messages
 
 from .cart import Cart
 from .forms import CheckoutForm
 from store.models import Product
 from order.models import Order, OrderItem
 from .email_utils import send_order_confirmation_email, send_internal_order_notification
+from frontend.turnstile import verify_turnstile
 
 def cart_detail(request):
     cart = Cart(request)
@@ -95,6 +97,12 @@ def checkout_view(request):
     final_total = cart.get_final_total()
 
     if request.method == "POST":
+        # Verify Turnstile first
+        if not verify_turnstile(request):
+            form = CheckoutForm(request.POST)
+            return render(request, "cart/checkout.html", {"form": form,"turnstile": True})
+
+        # Then validate the form
         form = CheckoutForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
@@ -141,6 +149,7 @@ def checkout_view(request):
         "meta_title": "Checkout - Fabstar Limited",
         "meta_description": "Complete your purchase securely with Fabstar Limited.",
         "no_index": True,
+        "turnstile": True,
     }
 
     return render(request, "cart/checkout.html", context)

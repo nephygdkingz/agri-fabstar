@@ -8,6 +8,7 @@ from django.db.models import Q
 from .decorators import redirect_authenticated
 from store.models import Product, Category
 from cart.email_utils import send_contact_form_notification
+from frontend.turnstile import verify_turnstile
 
 @redirect_authenticated('account:dashboard')
 def home_view(request):
@@ -62,6 +63,11 @@ def services(request):
 @redirect_authenticated('account:dashboard')
 def contact_view(request):
     if request.method == "POST":
+        # verify turnstile
+        if not verify_turnstile(request):
+            messages.error(request, "Please verify you are not a bot.")
+            return redirect("frontend:contact")
+        
         name = request.POST.get("name")
         email = request.POST.get("email")
         subject = request.POST.get("subject")
@@ -89,6 +95,7 @@ def contact_view(request):
             {"title": "Home", "url": reverse("frontend:home")},
             {"title": "Contact Us", "url": None},
         ],
+        "turnstile": True,
     }
     return render(request, "frontend/contact.html", context)
 
