@@ -1,5 +1,6 @@
 {% extends "../frontend/base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}{{ meta_title }}{% endblock %}
 {% block meta_description %}{{ meta_description }}{% endblock %}
@@ -48,11 +49,11 @@
                 <div class="row g-3 mb-4">
                     <div class="col-md-4">
                         <h6 class="fw-semibold text-secondary mb-1">Order ID</h6>
-                        <p class="mb-0">#FBS-239847</p>
+                        <p class="mb-0">#{{order.order_key}}</p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="fw-semibold text-secondary mb-1">Date</h6>
-                        <p class="mb-0">October 14, 2025</p>
+                        <p class="mb-0">{{order.created}}</p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="fw-semibold text-secondary mb-1">Payment Method</h6>
@@ -74,27 +75,23 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% for item in order_items %}
                             <tr>
-                                <td>Hybrid Maize Seeds</td>
-                                <td>2</td>
-                                <td>₦2,000</td>
-                                <td>₦4,000</td>
+                                <td>{{item.product.name}}</td>
+                                <td>{{item.quantity}}</td>
+                                <td>₦{{item.price|floatformat:0|intcomma}}</td>
+                                <td>₦{{item.get_item_subtotal|floatformat:0|intcomma}}</td>
                             </tr>
-                            <tr>
-                                <td>Organic Fertilizer</td>
-                                <td>1</td>
-                                <td>₦18,000</td>
-                                <td>₦18,000</td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                         <tfoot class="fw-semibold">
-                            <tr>
-                                <td colspan="3" class="text-end">Shipping</td>
-                                <td>₦1,500</td>
-                            </tr>
+                            <!-- <tr>
+                                <td colspan="3" class="text-end">Shipping <small class="text-muted">(flat)</small></td>
+                                <td>₦{{order.shipping_price}}</td>
+                            </tr> -->
                             <tr class="text-primary fs-5">
                                 <td colspan="3" class="text-end">Total</td>
-                                <td>₦23,500</td>
+                                <td>₦{{order.total|floatformat:0|intcomma}}</td>
                             </tr>
                         </tfoot>
                     </table>
@@ -103,7 +100,7 @@
                 <!-- Delivery Info -->
                 <div class="fade-up" style="animation-delay: 0.3s;">
                     <h6 class="fw-bold text-primary mb-2">Delivery Address</h6>
-                    <p class="mb-0">123 Farm Lane, Ebenebe, Anambra State, Nigeria</p>
+                    <p class="mb-0">{{order.address}}</p>
                 </div>
             </div>
         </div>

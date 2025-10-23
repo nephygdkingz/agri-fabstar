@@ -5,8 +5,10 @@ from django.core.mail import EmailMessage
 from django.http import HttpResponse
 from django.db.models import Q
 
+from .decorators import redirect_authenticated
 from store.models import Product, Category
 
+@redirect_authenticated('account:dashboard')
 def home_view(request):
     featured_products = Product.objects.filter(is_available=True,is_featured=True)
     context = {
@@ -23,9 +25,8 @@ def home_view(request):
     }
     return render(request, 'frontend/index.html', context)
 
-def services():
-    pass
 
+@redirect_authenticated('account:dashboard')
 def about_view(request):
     context = {
         "meta_title": "About Fabstar Limited | Agricultural, Livestock & Gas Experts in Nigeria",
@@ -41,6 +42,8 @@ def about_view(request):
     }
     return render(request, "frontend/about2.html", context)
 
+
+@redirect_authenticated('account:dashboard')
 def services(request):
     meta_title = "Our Services - Fabstar Limited"
     meta_description = (
@@ -54,6 +57,8 @@ def services(request):
 
     return render(request, "frontend/services.html", context)
 
+
+@redirect_authenticated('account:dashboard')
 def contact_view(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -92,44 +97,6 @@ def contact_view(request):
     }
     return render(request, "frontend/contact.html", context)
 
-def agricultural_products_view(request):
-    context = {
-        "meta_title": "Agricultural Products | Fabstar Limited Nigeria",
-        "meta_description": (
-            "Shop top-quality Nigerian agricultural products — including seeds, grains, fertilizers, "
-            "and farm equipment — supplied by Fabstar Limited."
-        ),
-        "og_image": request.build_absolute_uri("/static/images/og-agriculture.jpg"),
-        "breadcrumbs": [
-            {"title": "Home", "url": reverse("frontend:home")},
-            {"title": "Agricultural Products", "url": None},
-        ],
-        # Example placeholder data (you can later replace this with real DB data)
-        "products": [
-            {
-                "name": "Maize Seeds",
-                "image": "/static/images/products/maize.jpg",
-                "description": "High-yield hybrid maize seeds suitable for Nigerian soil.",
-            },
-            {
-                "name": "Fertilizers",
-                "image": "/static/images/products/fertilizer.jpg",
-                "description": "Organic and chemical fertilizers for better crop productivity.",
-            },
-            {
-                "name": "Cassava Stems",
-                "image": "/static/images/products/cassava.jpg",
-                "description": "Disease-resistant cassava varieties ready for planting.",
-            },
-            {
-                "name": "Farm Tools",
-                "image": "/static/images/products/tools.jpg",
-                "description": "Durable farm tools and equipment for all farming operations.",
-            },
-        ],
-    }
-    return render(request, "frontend/agricultural_products.html", context)
-
 def robots_txt(request):
     lines = [
         "User-agent: *",
@@ -143,6 +110,7 @@ def robots_txt(request):
     return HttpResponse("\n".join(lines), content_type="text/plain")
 
 
+@redirect_authenticated('account:dashboard')
 def product_list(request):
     # products = Product.objects.filter(is_available=True).select_related("category")
     products = Product.objects.filter(is_available=True)
@@ -162,6 +130,7 @@ def product_list(request):
     return render(request, "frontend/product_list.html", context)
 
 
+@redirect_authenticated('account:dashboard')
 def product_detail(request, slug):
     product = get_object_or_404(Product.objects.select_related("category"), slug=slug, is_available=True)
     images = product.media.all() 

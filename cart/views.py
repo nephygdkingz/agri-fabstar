@@ -3,7 +3,9 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 
 from .cart import Cart
+from .forms import CheckoutForm
 from store.models import Product
+from order.models import Order, OrderItem
 
 def cart_detail(request):
     cart = Cart(request)
@@ -86,30 +88,65 @@ def cart_remove_ajax(request):
 
 def checkout_view(request):
     cart = Cart(request)
-    cart_items = list(cart)  # __iter__ gives you all cart items
+    cart_items = list(cart)
     cart_total = cart.get_total_price()
+    shipping_cost = cart.get_shipping_cost()
+    final_total = cart.get_final_total()
+
+    if request.method == "POST":
+        form = CheckoutForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+
+            order = Order.objects.create(
+                full_name=f"{data['first_name']} {data['last_name']}",
+                email=data['email'],
+                phone=data['phone'],
+                country=data['country'],
+                city=data['city'],
+                address=data['address'],
+                total=cart_total,
+                shipping_price=shipping_cost,
+            )
+
+            for item in cart:
+                OrderItem.objects.create(
+                    order=order,
+                    product=item['product_obj'],
+                    price=item['price'],
+                    quantity=item['quantity'],
+                )
+
+            # Optional: clear cart
+            cart.clear()
+
+            # Redirect to success page with order ID
+            return redirect("cart:order_success", order_id=order.pk)
+    else:
+        form = CheckoutForm()
 
     context = {
-        'cart_items': cart_items,
-        'cart_total': f"{cart_total:.2f}",
-        'shipping': cart.get_shipping_cost(),
-        'final_total': cart.get_final_total(),
+        "form": form,
+        "cart_items": cart_items,
+        "cart_total": f"{cart_total:.2f}",
+        "shipping": shipping_cost,
+        "final_total": final_total,
         "meta_title": "Checkout - Fabstar Limited",
-        "meta_description": "Complete your purchase of agricultural products, livestock, and gas items with Fabstar Limited's secure checkout.",
-        "no_index": True,  # 👈 Prevent indexing
+        "meta_description": "Complete your purchase securely with Fabstar Limited.",
+        "no_index": True,
     }
 
-    # if request.method == "POST":
-        # Process order submission here (save to DB, trigger payment, etc.)
-        # Example redirect to a success page
-        # return redirect("frontend:order_success")
     return render(request, "cart/checkout.html", context)
 
 
-def order_success(request):
+def order_success(request, order_id):
+    order = Order.objects.get(pk=order_id)
+    order_items = order.items.all()
     context = {
         "meta_title": "Order Successful – Fabstar Limited",
         "meta_description": "Thank you for shopping with Fabstar Limited. Your order has been received successfully. We’ll contact you soon for delivery confirmation.",
         "no_index": True,  # 👈 Prevents Google from indexing this page
+        "order":order,
+        "order_items":order_items,
     }
     return render(request, "cart/order_success.html", context)
