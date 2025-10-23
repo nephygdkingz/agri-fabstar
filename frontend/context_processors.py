@@ -15,3 +15,10 @@ def default_meta(request):
     }
 
 
+from django.conf import settings
+
+def turnstile_keys(request):
+    """Add Cloudflare Turnstile site key to all templates."""
+    return {
+        "TURNSTILE_SITE_KEY": getattr(settings, "TURNSTILE_SITE_KEY", "")
+    }

@@ -12,7 +12,8 @@
   <div class="container text-center position-relative fade-up" style="z-index: 2;">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb justify-content-center mb-3">
-        <li class="breadcrumb-item"><a href="{% url 'frontend:home' %}" class="text-white text-decoration-none">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'frontend:home' %}" class="text-white text-decoration-none">Home</a>
+        </li>
         <li class="breadcrumb-item active text-white" aria-current="page">Sign In</li>
       </ol>
     </nav>
@@ -39,7 +40,7 @@
             <h3 class="fw-bold text-center text-primary mb-4">Sign In</h3>
             {% include 'alert/messages.html' %}
             <form action="." method="Post">
-                {% csrf_token %}
+              {% csrf_token %}
               <div class="mb-3">
                 <label for="username" class="form-label fw-semibold">Username</label>
                 <input type="text" name="username" class="form-control form-control-lg" id="username" required>
@@ -57,6 +58,11 @@
                 </div>
                 <a href="#" class="text-decoration-none text-primary small fw-semibold">Forgot Password?</a>
               </div>
+
+              <!-- cloudflare turtistle -->
+              <div class="cf-turnstile" data-sitekey="{{ TURNSTILE_SITE_KEY }}"></div>
+              <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 
               <!-- <button type="submit" class="btn btn-accent w-100 py-2 fw-semibold mb-3">Login</button> -->
 

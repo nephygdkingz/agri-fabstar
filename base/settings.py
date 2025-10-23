@@ -80,8 +80,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'frontend.context_processors.default_meta',
-                # "store.context_processors.categories_processor",
+                'frontend.context_processors.turnstile_keys',
                 'cart.context_processors.cart_item_count',
+                
             ],
         },
     },
@@ -210,3 +211,7 @@ MESSAGE_TAGS = {
     messages.WARNING: "warning",
     messages.ERROR: "danger",
 }
+
+TURNSTILE_SITE_KEY = os.getenv('CLOUDFLARE_SITE_KEY')
+TURNSTILE_SECRET_KEY = os.getenv('CLOUDFLARE_SECRET_KEY')
+
