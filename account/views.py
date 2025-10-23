@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from store.forms import AddProductForm, MediaFormSet, EditMediaFormSet
 from store.models import Product
 from order.models import Order
+from frontend.turnstile import verify_turnstile
 
 # Only allow staff or superusers
 def admin_required(user):
@@ -16,6 +17,11 @@ def login_view(request):
     next_url = request.GET.get('next') or request.POST.get('next')
 
     if request.method == 'POST':
+        # verify turnstile
+        if not verify_turnstile(request):
+            messages.error(request, "Please verify you are not a bot.")
+            return redirect("account:login")
+        
         username = request.POST.get('username')
         password = request.POST.get('password')
 
@@ -30,6 +36,7 @@ def login_view(request):
         "meta_title": "Login - Fabstar Limited",
         "meta_description": "Access your Fabstar Limited account to manage orders, track deliveries, and explore exclusive offers.",
         "no_index": True,  # 👈 Prevents indexing
+        "turnstile": True,
     }
     return render(request, 'account/login.html', context)
 

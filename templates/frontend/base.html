@@ -93,12 +93,16 @@
     <!-- boostrap js -->
     <script src="{% static 'frontend/js/bootstrap.min.js' %}"></script>
 
-
-
     <!-- custom js  -->
     <script src="{% static 'frontend/js/frontend.js' %}"></script>
 
-    {% block extra_js %}{% endblock %}
+    <!-- ✅ Include Turnstile JS globally -->
+    
+    {% block extra_js %}
+      {% if turnstile %}
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+      {% endif %}
+    {% endblock %}
 
     <!-- Toast Container (positioned in top right corner) -->
     <div aria-live="polite" aria-atomic="true" class="position-fixed top-0 end-0 p-3" style="z-index: 1055;">
