@@ -27,6 +27,17 @@
   color: #ffffff;
 }
 
+/* Accent Buttons (Search etc.) */
+.btn-accent {
+  background: var(--color-primary) !important;
+  color: var(--color-light);
+  border: none;
+}
+
+.btn-accent:hover {
+  background: var(--color-accent ) !important;
+}
+
 .bg-primary{
     background: var(--color-primary) !important;
 }
@@ -39,7 +50,7 @@ body {
 }
 
 .bg-dark {
-    background: #004851 !important;
+    background: var(--color-primary) !important;
 }
 
 /* Sidebar styling */

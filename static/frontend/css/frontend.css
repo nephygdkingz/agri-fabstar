@@ -1717,56 +1717,6 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* ===== ADMIN DASHBOARD ===== */
-.admin-dashboard {
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-.admin-sidebar {
-  width: 250px;
-  min-height: 100vh;
-  position: sticky;
-  top: 0;
-  background: var(--color-primary) !important;
-}
-
-.admin-sidebar .nav-link {
-  padding: 10px 15px;
-  border-radius: 6px;
-  transition: background 0.3s;
-  color: var(--color-light) !important;
-}
-
-.admin-sidebar .nav-link:hover,
-.admin-sidebar .nav-link.active {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.admin-content {
-  background-color: #f8f9fa;
-}
-
-.admin-content .card {
-  transition: all 0.3s ease;
-}
-
-.admin-content .card:hover {
-  transform: translateY(-4px);
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-  .admin-dashboard {
-    flex-direction: column;
-  }
-
-  .admin-sidebar {
-    width: 100%;
-    min-height: auto;
-  }
-}
-
 /* ===== INDUSTRY HIGHLIGHT SECTION ===== */
 #industries-highlight {
   background-color: #f8f9fa;
@@ -1830,17 +1780,6 @@
   width: 100%;
   height: auto;
 }
-
-/* Responsive fixes */
-/* @media (max-width: 992px) {
-  .images-side {
-    flex-direction: column;
-  }
-  .industry-img {
-    clip-path: none;
-    min-height: 250px;
-  }
-} */
 
 /* ===== FOCUS AREA ====  */
 .focus-areas {

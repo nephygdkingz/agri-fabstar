@@ -18,9 +18,9 @@ def login_view(request):
 
     if request.method == 'POST':
         # verify turnstile
-        # if not verify_turnstile(request):
-        #     messages.error(request, "Please verify you are not a bot.")
-        #     return redirect("account:login")
+        if not verify_turnstile(request):
+            messages.error(request, "Please verify you are not a bot.")
+            return redirect("account:login")
         
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -77,7 +77,7 @@ def dashboard_view(request):
         "order_page": order_page,
     }
 
-    return render(request, "account/main_dashboard.html", context)
+    return render(request, "account/dashboard.html", context)
 
 @login_required
 @user_passes_test(admin_required)
