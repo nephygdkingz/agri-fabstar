@@ -77,7 +77,7 @@ def dashboard_view(request):
         "order_page": order_page,
     }
 
-    return render(request, "account/base.html", context)
+    return render(request, "account/main_dashboard.html", context)
 
 @login_required
 @user_passes_test(admin_required)

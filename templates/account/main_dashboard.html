@@ -1,15 +1,15 @@
-{% extends "./admin_base.html" %}
+{% extends "./base.html" %}
 {% load static %}
 {% load humanize %}
 
-{% block admin_dashboard %}
+{% block content %}
 <div class="d-flex justify-content-between align-items-center mb-4 mt-4">
     <h3 class="fw-bold">Dashboard Overview</h3>
     <a href="{% url 'account:logout' %}" class="btn btn-accent">Logout</a href="">
 </div>
 {% include 'alert/messages.html' %}
 <!-- ===== ORDERS TABLE ===== -->
-<div class="card bg-dark mb-4 shadow-sm border-0 rounded-4">
+<div class="card mb-4 shadow-sm border-0 rounded-4">
     <div class="card-header bg-light fw-bold">Recent Orders</div>
     <div class="card-body table-responsive">
         <table class="table table-hover align-middle">
@@ -41,8 +41,8 @@
                     </td>
                     <td>
                         <button class="btn btn-sm btn-outline-info">View</button>
-                        <button class="btn btn-sm btn-outline-info">Edit</button>
-                        <button class="btn btn-sm btn-outline-info">Delete</button>
+                        <button class="btn btn-sm btn-outline-primary">Edit</button>
+                        <button class="btn btn-sm btn-outline-danger">Delete</button>
                     </td>
                 </tr>
                 {% endfor %}

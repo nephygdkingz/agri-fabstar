@@ -1,0 +1,161 @@
+:root {
+    /* ===== Brand Colors (from Fabstar logo) ===== */
+    --color-primary: #004851;
+    /* Deep Teal */
+    /* --color-accent: #0bb348; */
+    --color-accent: #28d166;
+    /* Bright Green */
+    --color-dark: #000000;
+    /* Black text */
+    --color-light: #ffffff;
+    /* White background */
+}
+
+/* general */
+.btn-primary-custom {
+  background: var(--color-accent);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 8px 18px rgba(253, 216, 53, 0.14);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.btn-primary-custom:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 36px rgba(253, 216, 53, 0.18);
+  background: var(--color-dark);
+  color: #ffffff;
+}
+
+.bg-primary{
+    background: var(--color-primary) !important;
+}
+.bg-info{
+    background: var(--color-accent) !important;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.bg-dark {
+    background: #004851 !important;
+}
+
+/* Sidebar styling */
+#sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #004851;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+#sidebar .nav-link {
+    color: #fff;
+}
+
+#sidebar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Default: sidebar beside main content */
+#sidebar {
+    position: fixed;
+    top: 56px;
+    /* height of navbar */
+    left: 0;
+    z-index: 1020;
+    /* below navbar */
+}
+
+#main-content {
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.3s;
+}
+
+/* On small screens: sidebar hidden initially, slides over everything */
+@media (max-width: 991.98px) {
+    #sidebar {
+        top: 0;
+        left: -250px;
+        z-index: 1050;
+        /* above navbar */
+    }
+
+    #sidebar.show {
+        left: 0;
+    }
+
+    #main-content {
+        margin-left: 0;
+    }
+
+    #closeSidebarBtn {
+        display: block;
+    }
+}
+
+/* Close button hidden on large screens */
+/* #closeSidebarBtn {
+      display: none;
+    } */
+
+/* Hide toggle on large screens */
+@media (min-width: 992px) {
+    #toggleSidebarBtn {
+        display: none;
+    }
+}
+
+
+/* ===== ADMIN DASHBOARD ===== */
+.admin-dashboard {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.admin-sidebar {
+  width: 250px;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  background: var(--color-primary) !important;
+}
+
+.admin-sidebar .nav-link {
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: background 0.3s;
+  color: var(--color-light) !important;
+}
+
+.admin-sidebar .nav-link:hover,
+.admin-sidebar .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.admin-content {
+  background-color: #f8f9fa;
+}
+
+.admin-content .card {
+  transition: all 0.3s ease;
+}
+
+.admin-content .card:hover {
+  transform: translateY(-4px);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .admin-dashboard {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    width: 100%;
+    min-height: auto;
+  }
+}
