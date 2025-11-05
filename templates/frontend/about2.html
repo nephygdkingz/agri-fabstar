@@ -3,7 +3,7 @@
 {% block title %}{{ meta_title }}{% endblock %}
 {% block extra_css %}
 <style>
-  .text-primary{
+  .text-primary {
     color: #004851 !important;
   }
 </style>
@@ -16,7 +16,8 @@
   <div class="container text-center position-relative fade-up" style="z-index: 2;">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb justify-content-center mb-3">
-        <li class="breadcrumb-item"><a href="{% url 'frontend:home' %}" class="text-white text-decoration-none">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'frontend:home' %}" class="text-white text-decoration-none">Home</a>
+        </li>
         <li class="breadcrumb-item active text-white" aria-current="page">About Us</li>
       </ol>
     </nav>
@@ -40,17 +41,26 @@
   <div class="container">
     <div class="row align-items-center g-5">
       <div class="col-md-6">
-        <img src="{% static 'frontend/images/heroes/hero-4.jpg' %}" 
-             alt="Farmers in a field" class="img-fluid rounded-4 shadow-sm">
+        <img src="{% static 'frontend/images/stock/owner.jpeg' %}" alt="Farmers in a field"
+          class="img-fluid rounded-4 shadow-sm">
       </div>
       <div class="col-md-6">
-        <h2 class="fw-bold mb-3" style="color: var(--color-primary);">Our Story</h2>
+        <h2 class="fw-bold mb-3" style="color: var(--color-primary);">About Us</h2>
         <p class="text-muted mb-4">
-          FabStar Limited began with a simple mission — to empower farmers with quality products and trusted support.
-          From premium seeds to modern equipment, we connect growers to tools that boost productivity and sustainability.
+          Founded by Engr. Fabulous J. Nweke, our company stands as a symbol of resilience and innovation across three
+          vital sectors: agriculture, oil and gas, and logistics.
+          What began as a modest vision has evolved into a dynamic enterprise dedicated to empowering communities,
+          driving sustainable growth, and building a legacy that stands the test of time.
         </p>
         <p class="text-muted">
-          Over the years, we've grown alongside our customers — evolving from a local supplier to a leading name in agricultural solutions across the region.
+          Our operations span livestock farming, rice processing and production, fuel stations, cooking gas plants, and haulage logistics. Each division plays a crucial role in ensuring food security, energy accessibility, and efficient transportation across regions.
+        </p>
+        <p class="text-muted">
+          We are driven by a commitment to excellence, ethical leadership, and sustainable practices—ensuring that every aspect of our business contributes positively to people, the planet, and prosperity.
+        </p>
+        <h5 class="text-muted">A Legacy of Resilience</h5>
+        <p class="text-muted">
+          Resilience is the foundation of our story. From humble beginnings to a diversified conglomerate, every milestone reflects a deep-rooted belief that strength is built through perseverance, integrity, and innovation. Under the visionary leadership of Engr. Fabulous J. Nweke, we continue to build a brand that not only endures but also inspires.
         </p>
       </div>
     </div>
@@ -65,12 +75,14 @@
       <div class="col-md-6 fade-up" style="animation-delay: 0.1s;">
         <i class="bi bi-bullseye fs-1 text-accent mb-3"></i>
         <h5 class="fw-semibold mb-2">Mission</h5>
-        <p class="text-muted">To provide affordable, reliable, and eco-friendly agricultural solutions that help farmers grow more with less.</p>
+        <p class="text-muted">Leading a bold movement in agriculture, energy, and logistics to drive social
+          sustainability.</p>
       </div>
       <div class="col-md-6 fade-up" style="animation-delay: 0.2s;">
         <i class="bi bi-eye fs-1 text-accent mb-3"></i>
         <h5 class="fw-semibold mb-2">Vision</h5>
-        <p class="text-muted">To be Africa's most trusted agricultural brand, driving innovation and sustainability for future generations.</p>
+        <p class="text-muted">Upholding the values of growth and empowerment while building a brand that stands the test
+          of time.</p>
       </div>
     </div>
   </div>
@@ -84,29 +96,29 @@
       <div class="col-sm-6 col-lg-3 fade-up" style="animation-delay: 0.1s;">
         <div class="value-card p-4 shadow-sm rounded-4 h-100">
           <i class="bi bi-shield-check fs-1 text-accent mb-3"></i>
-          <h6 class="fw-semibold mb-2">Integrity</h6>
-          <p class="text-muted small mb-0">We uphold honesty, transparency, and trust in every partnership.</p>
+          <h6 class="fw-semibold mb-2">Resilience,</h6>
+          <!-- <p class="text-muted small mb-0">We uphold honesty, transparency, and trust in every partnership.</p> -->
         </div>
       </div>
       <div class="col-sm-6 col-lg-3 fade-up" style="animation-delay: 0.2s;">
         <div class="value-card p-4 shadow-sm rounded-4 h-100">
           <i class="bi bi-flower1 fs-1 text-accent mb-3"></i>
-          <h6 class="fw-semibold mb-2">Sustainability</h6>
-          <p class="text-muted small mb-0">We champion eco-friendly practices for a healthier planet.</p>
+          <h6 class="fw-semibold mb-2">Integrity</h6>
+          <!-- <p class="text-muted small mb-0">We champion eco-friendly practices for a healthier planet.</p> -->
         </div>
       </div>
       <div class="col-sm-6 col-lg-3 fade-up" style="animation-delay: 0.3s;">
         <div class="value-card p-4 shadow-sm rounded-4 h-100">
           <i class="bi bi-lightbulb fs-1 text-accent mb-3"></i>
-          <h6 class="fw-semibold mb-2">Innovation</h6>
-          <p class="text-muted small mb-0">We embrace technology to simplify and transform farming.</p>
+          <h6 class="fw-semibold mb-2">Empowerment</h6>
+          <!-- <p class="text-muted small mb-0">We embrace technology to simplify and transform farming.</p> -->
         </div>
       </div>
       <div class="col-sm-6 col-lg-3 fade-up" style="animation-delay: 0.4s;">
         <div class="value-card p-4 shadow-sm rounded-4 h-100">
           <i class="bi bi-people fs-1 text-accent mb-3"></i>
-          <h6 class="fw-semibold mb-2">Community</h6>
-          <p class="text-muted small mb-0">We grow together — supporting farmers and strengthening local networks.</p>
+          <h6 class="fw-semibold mb-2">Excellence</h6>
+          <!-- <p class="text-muted small mb-0">We grow together — supporting farmers and strengthening local networks.</p> -->
         </div>
       </div>
     </div>
