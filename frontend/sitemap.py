@@ -23,7 +23,7 @@ class CategorySitemap(Sitemap):
         return Category.objects.filter(is_active=True)
 
     def location(self, obj):
-        return obj.get_absolute_url
+        return obj.get_absolute_url()
 
 
 class ProductSitemap(Sitemap):
@@ -37,4 +37,4 @@ class ProductSitemap(Sitemap):
         return obj.updated_at
 
     def location(self, obj):
-        return obj.get_absolute_url
+        return obj.get_absolute_url()
